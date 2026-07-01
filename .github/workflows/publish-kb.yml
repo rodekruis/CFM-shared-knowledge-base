@@ -1,0 +1,47 @@
+name: Publish Knowledge Base
+
+# Publishes the Markdown articles to EspoCRM on push to the default branch.
+# On pull requests it runs a dry-run to validate changes before merging.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+# Avoid overlapping publish runs racing against the same EspoCRM instance.
+concurrency:
+  group: publish-knowledge-base
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Validate articles (dry-run)
+        if: github.event_name == 'pull_request'
+        env:
+          ESPO_URL: ${{ secrets.ESPO_URL }}
+          ESPO_API_KEY: ${{ secrets.ESPO_API_KEY }}
+        run: uv run publish_kb.py --dry-run
+
+      - name: Publish articles to EspoCRM
+        if: github.event_name != 'pull_request'
+        env:
+          ESPO_URL: ${{ secrets.ESPO_URL }}
+          ESPO_API_KEY: ${{ secrets.ESPO_API_KEY }}
+        run: uv run publish_kb.py

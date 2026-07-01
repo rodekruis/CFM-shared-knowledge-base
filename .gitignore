@@ -1,0 +1,9 @@
+# Secrets — never commit credentials. Use GitHub Actions Secrets in CI.
+.env
+**/.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
