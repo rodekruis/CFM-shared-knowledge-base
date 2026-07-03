@@ -8,7 +8,7 @@ from pathlib import Path
 
 import markdown
 
-MARKDOWN_EXTENSIONS = ["extra", "sane_lists", "smarty"]
+MARKDOWN_EXTENSIONS = ["extra", "mdx_truly_sane_lists", "smarty"]
 
 
 def extract_title_and_body(md_text: str) -> tuple[str | None, str]:
