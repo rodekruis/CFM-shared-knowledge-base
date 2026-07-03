@@ -1,7 +1,8 @@
-name: Publish Knowledge Base
-
-# Publishes the Markdown articles to EspoCRM on push to the default branch.
-# On pull requests it runs a dry-run to validate changes before merging.
+name: Translate and Publish Knowledge Base
+# Translates the English articles into the other language folders, commits the
+# results, and then publishes all articles to EspoCRM. Translation always runs
+# before publishing so newly generated translations are published too.
+# On pull requests only a publish dry-run runs (no translation, no writes).
 on:
   push:
     branches:
@@ -11,17 +12,64 @@ on:
       - main
   workflow_dispatch: {}
 
-# Avoid overlapping publish runs racing against the same EspoCRM instance.
+# Serialize the whole pipeline so runs don't race on the repo or EspoCRM.
 concurrency:
-  group: publish-knowledge-base
+  group: knowledge-base
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
-  publish:
+  translate:
+    # Skip translation (and its writes) on pull requests.
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Translate articles
+        env:
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
+        run: uv run translate.py
+
+      - name: Commit translations
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain articles)" ]; then
+            git add articles
+            git commit -m "Translate Knowledge Base articles [skip ci]"
+            git push
+          else
+            echo "No translation changes to commit."
+          fi
+
+  publish:
+    needs: translate
+    # Run after translation succeeds, and also on pull requests where the
+    # translate job is skipped (so the PR dry-run still runs).
+    if: ${{ always() && needs.translate.result != 'failure' && needs.translate.result != 'cancelled' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        # Pull the latest commit, including translations pushed by the
+        # translate job above.
+        with:
+          ref: ${{ github.ref }}
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
