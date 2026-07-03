@@ -1,5 +1,23 @@
-"""Translate Markdown files between languages using an Azure-hosted GPT model."""
+"""Translate Knowledge Base Markdown files between languages with Azure OpenAI.
 
+Translates each article in the source language folder (default "English") into
+every sibling language folder under ./articles, mirroring the file name. When a
+translation already exists it is passed back to the model as reference so that
+established terminology and phrasing stay consistent.
+
+Reads Azure OpenAI configuration from the environment (.env):
+    AZURE_OPENAI_ENDPOINT       e.g. https://my-resource.openai.azure.com/
+                                (the /openai/v1/ suffix is added automatically)
+    AZURE_OPENAI_API_KEY        API key for the resource
+    AZURE_OPENAI_DEPLOYMENT     the chat model deployment name (e.g. gpt-4o)
+
+Usage:
+    python translate.py                             # translate into all languages
+    python translate.py --dry-run                   # show what would happen, no API calls
+    python translate.py --target-langs Français     # limit to specific languages
+"""
+
+import argparse
 import os
 from pathlib import Path
 
@@ -183,8 +201,6 @@ def translate_all(
 
 
 def main() -> None:
-    import argparse
-
     parser = argparse.ArgumentParser(
         description=(
             "Translate the source-language Knowledge Base articles into the "

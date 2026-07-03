@@ -8,6 +8,9 @@ from pathlib import Path
 
 import markdown
 
+# "mdx_truly_sane_lists" replaces the built-in "sane_lists" so that nested lists
+# indented with 2 spaces (the common editor default) render correctly, not just
+# those indented with 4 spaces.
 MARKDOWN_EXTENSIONS = ["extra", "mdx_truly_sane_lists", "smarty"]
 
 
@@ -30,10 +33,13 @@ def extract_title_and_body(md_text: str) -> tuple[str | None, str]:
     return None, md_text
 
 
-def resolve_title(entry: dict, h1_title: str | None, file_name: str) -> str:
-    """Resolve the article title: explicit config > first H1 > file name."""
-    if entry.get("title"):
-        return str(entry["title"]).strip()
+def resolve_title(h1_title: str | None, file_name: str) -> str:
+    """Resolve the article title: first H1 heading, else the file name.
+
+    When the Markdown file has no leading "# Heading", the file name (without
+    extension) is turned into a Title Cased fallback, e.g. "roles-and-permissions"
+    -> "Roles And Permissions".
+    """
     if h1_title:
         return h1_title
     return Path(file_name).stem.replace("-", " ").replace("_", " ").strip().title()

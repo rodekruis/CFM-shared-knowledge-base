@@ -3,9 +3,10 @@ Publish Knowledge Base articles to EspoCRM from Markdown files.
 
 Workflow for the team:
 1. Write each article as a Markdown file inside a language subfolder of the
-   ./articles folder, e.g. ./articles/English/getting-started.md.
+   ./articles folder, e.g. ./articles/English/roles-and-permissions.md.
 2. The subfolder name is used as the Knowledge Base category NAME (e.g.
-   English, Français, Español, Arabic).
+   English, Français, Español, العربية). Categories that don't exist yet are
+   created automatically.
 3. Run this script to convert Markdown -> HTML and create/update the articles
    in EspoCRM.
 
@@ -182,7 +183,7 @@ def main() -> None:
     for md_path, category in tqdm(articles, desc="Publishing"):
         md_text = md_path.read_text(encoding="utf-8")
         h1_title, body_md = extract_title_and_body(md_text)
-        title = resolve_title({}, h1_title, md_path.name)
+        title = resolve_title(h1_title, md_path.name)
         body_html = md_to_html(body_md)
 
         resolved_ids = resolve_categories(

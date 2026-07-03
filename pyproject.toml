@@ -1,7 +1,7 @@
 [project]
 name = "cfm-shared-knowledge-base"
 version = "0.1.0"
-description = "Publish Knowledge Base articles to EspoCRM from Markdown files."
+description = "Translate and publish multilingual Knowledge Base articles to EspoCRM from Markdown files."
 requires-python = ">=3.12"
 dependencies = [
     "markdown",
