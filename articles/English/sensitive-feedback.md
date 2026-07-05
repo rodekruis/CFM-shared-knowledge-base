@@ -18,17 +18,17 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
 - **Feedback Collector**
   - Logs feedback in Kobo.
   - Flags feedback as sensitive where applicable.
-- **Feedback Manager**
+- **Feedback Supervisor**
   - Reviews incoming feedback.
   - Confirms whether feedback is sensitive according to NS definitions.
-  - Assigns a designated Sensitive Feedback Manager.
+  - Assigns a designated Sensitive Feedback Focal Point (see below).
   - Ensures follow-up takes place.
-  - User account configurations: *[screenshots: role/permission settings]*
-- **Feedback Creator and Editor (Authorized Individual – Sensitive Feedback Manager)**
+  - User account configurations.
+- **Feedback Handler**
   - Handles the case end-to-end.
   - Ensures appropriate follow-up and documentation.
   - Updates status and closes the case.
-  - User account configurations: *[screenshots: role/permission settings]*
+  - User account configurations.
 - **System (Kobo / EspoCRM)**
   - Automatically sets priority to *High* when feedback is marked as sensitive.
   - Automatically authorizes Feedback Managers for handling sensitive feedback (based on NS-defined roles/permissions).
@@ -42,17 +42,13 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
  
 - Feedback is collected and logged in Kobo.
 - If applicable, the Feedback Collector marks the feedback as **sensitive**.
-- If it is not known whether feedback is sensitive, leave empty.
+- If the feedback is marked as sensitive, the system automatically:
+  - Sets its priority to **High**.
+  - Assigns it to the Feedback Supervisor for review.
 
-#### Step 2: Automatic System Actions
+#### Step 2: Review and Validation
  
-- The system automatically:
-  - Sets priority to **High**.
-  - Routes the feedback for review.
-
-#### Step 3: Review and Validation
- 
-- The Feedback Manager:
+- The Feedback Supervisor:
   - Reviews the feedback.
   - Confirms whether it meets the NS definition of sensitive feedback.
 - If **not sensitive**:
@@ -60,36 +56,34 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
   - Reset priority.
   - Process according to standard feedback procedures.
 - If **sensitive**:
-  - Proceed to Step 4.
+  - Proceed to Step 3.
 
-#### Step 4: Assignment
+#### Step 3: Assignment
  
-- The Feedback Manager assigns the case to a **designated Sensitive Feedback Manager**.
+- The Feedback Supervisor assigns the case to a **designated Sensitive Feedback Focal Point**.
 - The system sets the case status to **In Progress**.
 
-#### Step 5: Notification and Monitoring
+#### Step 4: Notification and Monitoring
  
-- The assigned Sensitive Feedback Manager:
-  - Receives notification via email and EspoCRM.
-- The system:
-  - Sends daily reminders until the case is updated.
+- The Sensitive Feedback Focal Point receives notification via email and EspoCRM.
+- The system sends him/her daily reminders until the case is updated.
 
-#### Step 6: Case Handling
+#### Step 5: Case Handling
  
-- The Sensitive Feedback Manager:
+- The Sensitive Feedback Focal Point:
   - Reviews the case.
   - Takes appropriate action.
   - Follows internal standard operating procedures on handling sensitive cases.
   - Shares feedback internally **if** required and allowed.
 
-#### Step 7: Status Updates
+#### Step 6: Status Updates
  
-- The Sensitive Feedback Manager updates the case status as work progresses.
+- The Sensitive Feedback Focal Point updates the case status as work progresses.
 
-#### Step 8: Closure
+#### Step 7: Closure
  
 - Once the case is resolved:
-  - The Sensitive Feedback Manager marks the case as **closed**.
+  - The Sensitive Feedback Focal Point marks the case as **closed**.
   - Closure is confirmed in the overview system.
 
 ### 5. Key Principles
