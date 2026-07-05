@@ -15,6 +15,21 @@ from cfm_kb.glossary import TerminologyError
 from cfm_kb.translate import translate_all
 
 
+@pytest.fixture(autouse=True)
+def _fake_azure_env(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Provide dummy Azure OpenAI env so ``translate_all`` can build a client.
+
+    ``translate_all`` resolves the deployment and OpenAI client (fail-fast,
+    reused across files) before delegating to the monkeypatched
+    ``translate_markdown``. The client is never actually called, so dummy values
+    are enough — this keeps the tests hermetic and free of real credentials,
+    which the CI test step does not (and should not) provide.
+    """
+    monkeypatch.setenv("AZURE_OPENAI_ENDPOINT", "https://dummy.openai.azure.com/")
+    monkeypatch.setenv("AZURE_OPENAI_API_KEY", "dummy-key")
+    monkeypatch.setenv("AZURE_OPENAI_DEPLOYMENT", "dummy-deployment")
+
+
 def _make_articles(tmp_path: Path) -> Path:
     """Create an ``articles`` dir with two English sources and one target lang."""
     articles = tmp_path / "articles"
