@@ -19,32 +19,41 @@ Articles are matched by category and title: if an article with the same title
 already exists in that category it is updated, otherwise a new one is created
 (idempotent). All articles are published with status "Published".
 
-Usage:
-    python publish_kb.py                            # publish all articles
-    python publish_kb.py --dry-run                  # show what would happen, no writes
+The command-line entry point lives in ``cli.py``; call ``run_publish`` to run
+the pipeline programmatically.
 """
 
-import argparse
-import os
+import base64
+import logging
+import mimetypes
 from pathlib import Path
 
 from dotenv import load_dotenv
-from espo_api_client import EspoAPI
-from markdown_utils import extract_title_and_body, md_to_html, resolve_title
+
+from .data_types import Article, Category, LocalImageRef
+from .espo_api_client import EspoAPI
+from .markdown_utils import (
+    extract_local_images,
+    extract_title_and_body,
+    md_to_html,
+    resolve_title,
+    rewrite_image_sources,
+)
 from tqdm import tqdm
+from .translate import DEFAULT_SOURCE_LANG, translate_all
+from .utils import require_env
+
+logger = logging.getLogger(__name__)
 
 # Configuration
-BASE_DIR = Path(__file__).parent
-ARTICLES_DIR = BASE_DIR / "articles"
+ARTICLES_DIR = Path("articles")
 
 ARTICLE_ENTITY = "KnowledgeBaseArticle"
 CATEGORY_ENTITY = "KnowledgeBaseCategory"
 
 DEFAULT_STATUS = "Published"
 
-load_dotenv(BASE_DIR / ".env")
-ESPO_URL = os.environ["ESPO_URL"]
-ESPO_API_KEY = os.environ["ESPO_API_KEY"]
+load_dotenv()
 
 
 def discover_articles(articles_dir: Path) -> list[tuple[Path, str]]:
@@ -82,9 +91,9 @@ def get_existing_records(
         if not records:
             break
         for rec in records:
-            key = rec.get(key_field)
-            if key:
-                existing[key] = rec["id"]
+            category = Category.from_api(rec)
+            if category.id:
+                existing[category.name] = category.id
         if len(records) < limit:
             break
         offset += limit
@@ -144,37 +153,88 @@ def resolve_categories(
             resolved.append(category_ids[name])
         else:
             if dry_run:
-                print(f"    [dry-run] would create category '{name}'")
+                logger.info("[dry-run] would create category '%s'", name)
                 category_ids[name] = f"<new:{name}>"
             else:
                 result = client.request("POST", CATEGORY_ENTITY, {"name": name})
                 category_ids[name] = result["id"]
-                print(f"    Created category '{name}'")
+                logger.info("Created category '%s'", name)
             resolved.append(category_ids[name])
     return resolved
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Publish Knowledge Base articles to EspoCRM from Markdown files."
-    )
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Show what would be done without writing to EspoCRM.",
-    )
-    args = parser.parse_args()
+def upload_images(
+    client: EspoAPI,
+    refs: list[LocalImageRef],
+    dry_run: bool,
+) -> dict[str, str]:
+    """Upload local images to EspoCRM; return an ``{original_src: new_src}`` map.
 
-    client = EspoAPI(ESPO_URL, ESPO_API_KEY)
+    This is the load-side counterpart to the pure ``extract_local_images`` /
+    ``rewrite_image_sources`` helpers: each referenced image is uploaded once as
+    an inline attachment on the article ``body`` field, and its new EspoCRM
+    entry-point URL is recorded in the returned map. Images whose file is
+    missing are skipped with a warning and left out of the map, so their src
+    stays unchanged.
+    """
+    src_map: dict[str, str] = {}
+    for ref in refs:
+        if not ref.path.is_file():
+            logger.warning("image not found, leaving src unchanged: %s", ref.src)
+            continue
 
-    print("Fetching existing categories and articles from EspoCRM...")
+        if dry_run:
+            logger.info("[dry-run] would upload image '%s'", ref.path.name)
+            src_map[ref.src] = f"?entryPoint=attachment&id=<new:{ref.path.name}>"
+            continue
+
+        mime_type = mimetypes.guess_type(ref.path.name)[0] or "application/octet-stream"
+        encoded = base64.b64encode(ref.path.read_bytes()).decode("ascii")
+        payload = {
+            "name": ref.path.name,
+            "type": mime_type,
+            "role": "Inline Attachment",
+            "relatedType": ARTICLE_ENTITY,
+            "field": "body",
+            "file": f"data:{mime_type};base64,{encoded}",
+        }
+        result = client.request("POST", "Attachment", payload)
+        src_map[ref.src] = f"?entryPoint=attachment&id={result['id']}"
+        logger.info("Uploaded image '%s'", ref.path.name)
+    return src_map
+
+
+def run_publish(dry_run: bool = False) -> None:
+    """Translate missing articles, then publish every language to EspoCRM.
+
+    Args:
+        dry_run: When True, no writes are made to EspoCRM; the planned actions
+            are logged instead.
+    """
+    espo_url = require_env("ESPO_URL")
+    espo_api_key = require_env("ESPO_API_KEY")
+    client = EspoAPI(espo_url, espo_api_key)
+
+    logger.info("Creating missing translations...")
+    translate_all(
+        articles_dir=ARTICLES_DIR,
+        source_lang=DEFAULT_SOURCE_LANG,
+        dry_run=dry_run,
+        only_missing=True,
+    )
+
+    logger.info("Fetching existing categories and articles from EspoCRM...")
     category_ids = get_existing_records(client, CATEGORY_ENTITY)
     existing_articles = get_existing_articles_by_category(client, category_ids)
-    print(f"  Categories: {len(category_ids)}, Articles: {len(existing_articles)}")
+    logger.info(
+        "Found %d categories, %d articles",
+        len(category_ids),
+        len(existing_articles),
+    )
 
     articles = discover_articles(ARTICLES_DIR)
     if not articles:
-        print(f"No Markdown files found under {ARTICLES_DIR}")
+        logger.warning("No Markdown files found under %s", ARTICLES_DIR)
         return
 
     created = 0
@@ -184,44 +244,65 @@ def main() -> None:
         md_text = md_path.read_text(encoding="utf-8")
         h1_title, body_md = extract_title_and_body(md_text)
         title = resolve_title(h1_title, md_path.name)
+
+        # Transform (pure): Markdown -> HTML and locate any local images.
         body_html = md_to_html(body_md)
+        image_refs = extract_local_images(body_html, md_path.parent)
+
+        # Load (I/O): upload the images, then rewrite their sources in the HTML.
+        src_map = upload_images(client, image_refs, dry_run)
+        body_html = rewrite_image_sources(body_html, src_map)
 
         resolved_ids = resolve_categories(
             client,
             [category],
             category_ids,
-            args.dry_run,
+            dry_run,
         )
 
-        payload = {
-            "name": title,
-            "body": body_html,
-            "status": DEFAULT_STATUS,
-            "categoriesIds": resolved_ids,
-        }
+        article = Article(
+            title=title,
+            body_html=body_html,
+            category=category,
+            category_ids=tuple(resolved_ids),
+            status=DEFAULT_STATUS,
+        )
+        payload = article.to_dict()
 
         article_key = (category, title)
         if article_key in existing_articles:
             record_id = existing_articles[article_key]
-            if args.dry_run:
-                print(
-                    f"    [dry-run] would UPDATE '{title}' [{category}] ({DEFAULT_STATUS})"
+            if dry_run:
+                logger.info(
+                    "[dry-run] would UPDATE '%s' [%s] (%s)",
+                    title,
+                    category,
+                    DEFAULT_STATUS,
                 )
             else:
                 client.request("PUT", f"{ARTICLE_ENTITY}/{record_id}", payload)
             updated += 1
         else:
-            if args.dry_run:
-                print(
-                    f"    [dry-run] would CREATE '{title}' [{category}] ({DEFAULT_STATUS})"
+            if dry_run:
+                logger.info(
+                    "[dry-run] would CREATE '%s' [%s] (%s)",
+                    title,
+                    category,
+                    DEFAULT_STATUS,
                 )
             else:
                 result = client.request("POST", ARTICLE_ENTITY, payload)
                 existing_articles[article_key] = result["id"]
             created += 1
 
-    print(f"\nDone. Created: {created}, Updated: {updated}")
+    logger.info("Done. Created: %d, Updated: %d", created, updated)
 
 
 if __name__ == "__main__":
-    main()
+    # Dev smoke test only; the production entry point is the `cfm-kb` CLI.
+    # Run with `python -m cfm_kb.publish_kb` so relative imports resolve.
+    from .utils import configure_utf8_output, setup_logging
+
+    configure_utf8_output()
+    setup_logging()
+    run_publish(dry_run=True)

@@ -4,10 +4,34 @@ version = "0.1.0"
 description = "Translate and publish multilingual Knowledge Base articles to EspoCRM from Markdown files."
 requires-python = ">=3.12"
 dependencies = [
+    "click",
     "markdown",
     "mdx-truly-sane-lists>=1.3",
     "openai",
     "python-dotenv",
     "requests",
     "tqdm",
+]
+
+[project.scripts]
+cfm-kb = "cfm_kb.cli:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cfm_kb"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+    "integration: integration tests",
+    "needs_secrets: needs API keys/credentials",
 ]

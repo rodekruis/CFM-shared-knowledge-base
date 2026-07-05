@@ -7,6 +7,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "articles/**"
+      - "src/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/publish-kb.yml"
   pull_request:
     branches:
       - main
@@ -19,11 +26,10 @@ concurrency:
 
 permissions:
   contents: write
+  pull-requests: read
 
 jobs:
-  translate:
-    # Skip translation (and its writes) on pull requests.
-    if: github.event_name != 'pull_request'
+  translate-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -38,58 +44,59 @@ jobs:
       - name: Install dependencies
         run: uv sync --locked
 
+      # Check if code changed.
+      - name: Detect code changes
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            code:
+              - 'src/**'
+              - 'tests/**'
+              - 'pyproject.toml'
+              - 'uv.lock'
+              - '.github/workflows/publish-kb.yml'
+
+      # If code changed, run the test suite; skip the rest if tests fail.
+      - name: Run tests
+        if: steps.changes.outputs.code == 'true' || github.event_name == 'workflow_dispatch'
+        run: uv run python -m pytest
+
+      # Skip translation (and its writes) on pull requests.
       - name: Translate articles
+        if: github.event_name != 'pull_request'
         env:
           AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
-        run: uv run translate.py
+        run: uv run cfm-kb translate
 
       - name: Commit translations
+        if: github.event_name != 'pull_request'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain articles)" ]; then
             git add articles
             git commit -m "Translate Knowledge Base articles [skip ci]"
+            # Rebase onto any commits pushed to main while this run was in
+            # flight so the push doesn't fail with a non-fast-forward error.
+            git pull --rebase origin ${GITHUB_REF_NAME}
             git push
           else
             echo "No translation changes to commit."
           fi
-
-  publish:
-    needs: translate
-    # Run after translation succeeds, and also on pull requests where the
-    # translate job is skipped (so the PR dry-run still runs).
-    if: ${{ always() && needs.translate.result != 'failure' && needs.translate.result != 'cancelled' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-        # Pull the latest commit, including translations pushed by the
-        # translate job above.
-        with:
-          ref: ${{ github.ref }}
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-        with:
-          python-version: "3.12"
-          enable-cache: true
-
-      - name: Install dependencies
-        run: uv sync --locked
 
       - name: Validate articles (dry-run)
         if: github.event_name == 'pull_request'
         env:
           ESPO_URL: ${{ secrets.ESPO_URL }}
           ESPO_API_KEY: ${{ secrets.ESPO_API_KEY }}
-        run: uv run publish_kb.py --dry-run
+        run: uv run cfm-kb publish --dry-run
 
       - name: Publish articles to EspoCRM
         if: github.event_name != 'pull_request'
         env:
           ESPO_URL: ${{ secrets.ESPO_URL }}
           ESPO_API_KEY: ${{ secrets.ESPO_API_KEY }}
-        run: uv run publish_kb.py
+        run: uv run cfm-kb publish
