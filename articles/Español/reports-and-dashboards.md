@@ -98,7 +98,7 @@ Puedes usar los informes para:
 - Exportar datos para compartir hallazgos
 *Nota: el nombre del proyecto debe escribirse correctamente al filtrar por proyectos en el informe. La lista final de títulos de proyectos está disponible en el Kobo Form y puede ser compartida por el Feedback Manager.*
  
-### Convertir los hallazgos en acción
+### Convertir los hallazgos en acciones
  
 El paso más importante al usar los informes y el panel: pregúntate siempre **"¿Qué deberíamos hacer de manera diferente basándonos en esto?"**
  
