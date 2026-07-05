@@ -21,7 +21,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 - **Supervisor de Retroalimentación**
   - Revisa la retroalimentación entrante.
   - Confirma si la retroalimentación es sensible según las definiciones de la SN.
-  - Asigna un **punto focal de Retroalimentación Sensible** designado (ver abajo).
+  - Asigna un punto focal de Retroalimentación Sensible designado (ver abajo).
   - Garantiza que se realice el seguimiento.
   - Configuraciones de la cuenta de usuario.
 - **Gestor de Retroalimentación**
