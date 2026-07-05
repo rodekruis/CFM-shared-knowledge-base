@@ -19,7 +19,7 @@ HTML and published to EspoCRM.
    - publishes **all** languages to EspoCRM.
 
 English is the source of truth, so most of the time you only edit English. But
-if a machine translation isn't accurate enough you **can** fix it by hand — the
+if a machine translation isn't accurate enough you **can** fix it by hand; the
 correction is preserved on future runs (see
 [Fixing a machine translation](#fixing-a-machine-translation)).
 
@@ -32,7 +32,7 @@ Only touch the `English` folder:
    back to a title-cased version of the file name.
 
 The matching translated files (`articles/Français/roles-and-permissions.md`,
-etc.) are produced automatically — don't create them yourself.
+etc.) are produced automatically, don't create them yourself.
 
 ## Fixing a machine translation
 
@@ -70,7 +70,7 @@ where only the target-language wording is wrong.
 
 Domain terms must be translated the same way everywhere (e.g. *feedback*,
 *National Society*, *EspoCRM*). A curated **glossary** enforces this in two
-deterministic ways — no extra model call, so translation cost is unchanged:
+deterministic ways:
 
 - **Prompt guidance.** When an article is translated, the glossary terms that
   appear in it are injected into the prompt with their agreed translations, so
@@ -78,14 +78,14 @@ deterministic ways — no extra model call, so translation cost is unchanged:
 - **A hard check (fail + flag).** After each file is translated, every glossary
   term present in the English source must have one of its accepted target forms
   in the machine translation. If any is missing, the run **fails** and lists the
-  offending `language/file: term` so a human can review it — nothing is
+  offending `language/file: term` so a human can review it; nothing is
   committed or published until it's fixed. The check only runs on the
   translations the pipeline generates; hand-edited translations are never gated.
 
 The term base lives in [glossary.json](glossary.json) at the repo root (it's
 pipeline config, not code). Each entry lists the English source form(s) and the
-accepted translation(s) per language (list every inflected form — e.g.
-singular/plural — so the check doesn't raise false positives). Do-not-translate
+accepted translation(s) per language (list every inflected form, e.g.
+singular/plural, so the check doesn't raise false positives). Do-not-translate
 terms simply repeat the same value across languages. Extend it as new domain
 terms appear.
 
