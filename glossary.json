@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "_comment": "Domain term base used by the translator. For each term, if any English 'source' form appears in an article, at least one of the per-language accepted forms must appear in the translation; otherwise the run fails and flags the term for human review. The first accepted form per language is the preferred one injected into the model prompt. Do-not-translate terms list the same value across languages. Curated from the existing Knowledge Base translations; extend as terminology grows.",
+  "terms": [
+    {
+      "id": "espocrm",
+      "source": ["EspoCRM"],
+      "translations": {
+        "Français": ["EspoCRM"],
+        "Español": ["EspoCRM"],
+        "العربية": ["EspoCRM"]
+      }
+    },
+    {
+      "id": "feedback-management-platform",
+      "source": ["Feedback Management Platform"],
+      "translations": {
+        "Français": ["Plateforme de Gestion des Retours d'Information"],
+        "Español": ["Plataforma de Gestión de Retroalimentación"],
+        "العربية": ["منصة إدارة الملاحظات"]
+      }
+    },
+    {
+      "id": "feedback",
+      "source": ["feedback"],
+      "translations": {
+        "Français": ["retour d'information", "retours d'information"],
+        "Español": ["retroalimentación"],
+        "العربية": ["الملاحظات", "ملاحظات"]
+      }
+    },
+    {
+      "id": "national-society",
+      "source": ["National Society", "National Societies"],
+      "translations": {
+        "Français": ["Société Nationale", "Sociétés Nationales"],
+        "Español": ["Sociedad Nacional", "Sociedades Nacionales"],
+        "العربية": ["الجمعية الوطنية", "الجمعيات الوطنية"]
+      }
+    },
+    {
+      "id": "focal-point",
+      "source": ["focal point", "focal points"],
+      "translations": {
+        "Français": ["point focal", "points focaux"],
+        "Español": ["punto focal", "puntos focales"],
+        "العربية": ["نقطة الاتصال", "نقاط الاتصال"]
+      }
+    },
+    {
+      "id": "team",
+      "source": ["Team", "Teams"],
+      "translations": {
+        "Français": ["Équipe", "Équipes"],
+        "Español": ["Equipo", "Equipos"],
+        "العربية": ["فريق", "فرق"]
+      }
+    }
+  ]
+}

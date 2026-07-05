@@ -2,13 +2,13 @@
 
 ### Propósito
 
-Documentar los roles y permisos de los usuarios es esencial para garantizar claridad, seguridad y responsabilidad dentro de la Plataforma de Gestión de Retroalimentación. Esto ayudará a comprender quién puede acceder, modificar o gestionar secciones específicas de la plataforma y sus datos. Esto reducirá el riesgo de configuraciones incorrectas, acceso no autorizado y errores operativos. También respalda la incorporación, la auditoría y el cumplimiento al proporcionar una referencia confiable para el comportamiento del sistema. 
+Documentar los roles y permisos de los usuarios es esencial para garantizar claridad, seguridad y responsabilidad dentro de la Plataforma de Gestión de Retroalimentación. Ayudará a comprender quién puede acceder, modificar o gestionar secciones específicas de la plataforma y sus datos. Esto reducirá el riesgo de configuraciones incorrectas, accesos no autorizados y errores operativos. También respalda la incorporación, la auditoría y el cumplimiento al proporcionar una referencia confiable sobre el comportamiento del sistema. 
 
-Se puede encontrar una descripción más detallada de la gestión de roles en la [documentación oficial de EspoCRM](https://docs.espocrm.com/administration/roles-management/). 
+Puede encontrarse una visión general más detallada de la gestión de roles en la [documentación oficial de EspoCRM](https://docs.espocrm.com/administration/roles-management/). 
 
 ### Acceso a la Plataforma de Gestión de Retroalimentación
 
-Las Sociedades Nacionales tienen la capacidad de acceder a la Plataforma de Gestión de Retroalimentación. Dado que esta es una plataforma compartida, a cada Sociedad Nacional se le asigna un Equipo, lo que les permite acceder **SOLO** a sus datos de retroalimentación y visualizaciones.
+Las Sociedades Nacionales tienen la capacidad de acceder a la Plataforma de Gestión de Retroalimentación. Dado que esta es una plataforma compartida, a cada Sociedad Nacional se le asigna un Equipo, lo que le permite acceder **SOLO** a sus datos y visualizaciones de retroalimentación.
 
 Dentro de la estructura de Equipo por Sociedad Nacional, varios usuarios de la Sociedad Nacional pueden vincularse al Equipo correspondiente para obtener acceso. Dependiendo de los roles y permisos específicos del usuario, este puede crear, leer, editar y/o eliminar datos de retroalimentación.
 
@@ -49,8 +49,8 @@ Este rol está designado para miembros de la SN (p. ej., puntos focales de CVA, 
 
 Lo que puede hacer en la plataforma:
 
-- Leer y editar registros de retroalimentación asignados a ellos
-- Dar seguimiento a registros de retroalimentación asignados a ellos
+- Leer y editar los registros de retroalimentación asignados a ellos
+- Dar seguimiento a los registros de retroalimentación asignados a ellos
 - Dar seguimiento en el stream con otros colegas
 - Leer informes
 
@@ -61,7 +61,7 @@ Este rol está designado para el punto focal de la SN (p. ej., punto focal de PG
 
 Lo que puede hacer en la plataforma:
 
-- Leer y editar registros de retroalimentación que sean sensibles
+- Leer y editar registros de retroalimentación sensibles
 - Dar seguimiento y cerrar registros de retroalimentación sensibles
 - Leer informes
 

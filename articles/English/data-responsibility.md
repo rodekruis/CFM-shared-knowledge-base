@@ -2,15 +2,15 @@
  
 ### Purpose
  
-This document provides a clear overview of data responsibilities for National Societies (NS) participating in the Regional Feedback Management Platform. It defines who is accountable for data, how it is processed, and what obligations each role carries.
+This document provides a clear overview of data responsibilities for National Societies (NS) participating in the Feedback Management Platform. It defines who is accountable for data, how it is processed, and what obligations each role carries.
  
 ### Platform Overview
  
-- **Platform:** Regional Feedback Management Platform (EspoCRM) and KoboToolbox.
+- **Platform:** Feedback Management Platform (EspoCRM) and KoboToolbox.
 - **Operated by:** Netherlands Red Cross (NLRC).
-- **NS in scope:** Any National Society formally onboarded to the Regional Feedback Management Platform.
+- **NS in scope:** Any National Society formally onboarded to the Feedback Management Platform.
 - **Purpose:** Collect, manage, and follow-up community feedback submitted to the NS through digital forms (KoboToolbox) or direct entry (EspoCRM).
-- **Data segregation:** Each NS is assigned to a team within the Regional Feedback Management Platform, ensuring that staff can only access feedback related to their own NS.
+- **Data segregation:** Each NS is assigned to a team within the Feedback Management Platform, ensuring that staff can only access feedback related to their own NS.
 - **Sensitive flag:** Feedback can be marked as sensitive, restricting access to authorized roles only.
 
 ### Data Roles and Responsibilities
@@ -28,7 +28,7 @@ This document provides a clear overview of data responsibilities for National So
 | **Sensitive Feedback Manager** | NS staff (restricted access) | • Handles sensitive feedback cases<br>• Must adhere to strict confidentiality obligations | Read and edit feedback marked as sensitive |
 | **Report Viewer** | NS staff / management | • Monitors trends and program performance<br>• Uses data for program improvement | • Read reports (only)<br>• No individual record access |
 | **Client Support** | NLRC support staff | • Provides technical support to NS users<br>• Does not access feedback content in normal operations | Limited access: For support purposes only |
- 
+
 ### Data Processed
  
 - **Nature:** Community feedback submitted by or on behalf of individuals.
@@ -42,7 +42,7 @@ This document provides a clear overview of data responsibilities for National So
 
 ### Governance and Legal Basis
  
-- **Legitimate basis:** The Regional Feedback Management Platform supports National Societies in collecting and responding to community feedback as part of their humanitarian programs. Each participating NS, as Data Controller, is responsible for confirming the appropriate legal basis under applicable national and Red Cross Red Crescent data protection standards.
+- **Legitimate basis:** The Feedback Management Platform supports National Societies in collecting and responding to community feedback as part of their humanitarian programs. Each participating NS, as Data Controller, is responsible for confirming the appropriate legal basis under applicable national and Red Cross Red Crescent data protection standards.
 - **Data Sharing Agreement (DSA):** A DSA between each participating NS (as Data Controller) and NLRC (as Data Processor) is required before onboarding. This agreement should cover: scope and purpose of processing, security obligations, breach notification, sub-processor agreements, and data subject rights support.
 - **Retention period:** Personal data collected through the platform will be retained for a maximum of 2 years from the data collection, after which it will be deleted or anonymized. Data may not be stored longer than necessary for the purpose for which it was collected.
 - **Data Protection Impact Assessment (DPIA):** Given that PII is collected, participating NS should assess the need for a DPIA, particularly where sensitive feedback is processed or the NS serves vulnerable populations. NLRC will support with relevant technical information. [DPIA requirement to be assessed per NS].

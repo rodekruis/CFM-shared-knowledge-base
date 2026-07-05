@@ -26,6 +26,8 @@ packages = ["src/cfm_kb"]
 [dependency-groups]
 dev = [
     "pytest>=8.0",
+    "ruff>=0.8",
+    "ty",
 ]
 
 [tool.pytest.ini_options]
@@ -35,3 +37,14 @@ markers = [
     "integration: integration tests",
     "needs_secrets: needs API keys/credentials",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "UP", "B", "SIM", "T20", "N", "RET", "PTH"]
+
+[tool.ty.environment]
+python-version = "3.12"
+root = ["./src"]

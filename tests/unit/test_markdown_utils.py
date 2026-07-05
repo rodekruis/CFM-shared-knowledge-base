@@ -113,15 +113,15 @@ class TestExtractLocalImages:
     )
     def test_remote_or_inline_sources_ignored(self, src: str) -> None:
         html = f'<img src="{src}">'
-        assert extract_local_images(html, Path(".")) == []
+        assert extract_local_images(html, Path()) == []
 
     def test_duplicate_sources_returned_once(self) -> None:
         html = '<img src="a.png"><img src="a.png"><img src="b.png">'
-        refs = extract_local_images(html, Path("."))
+        refs = extract_local_images(html, Path())
         assert [r.src for r in refs] == ["a.png", "b.png"]
 
     def test_no_images(self) -> None:
-        assert extract_local_images("<p>no images</p>", Path(".")) == []
+        assert extract_local_images("<p>no images</p>", Path()) == []
 
 
 class TestRewriteImageSources:
@@ -138,7 +138,7 @@ class TestRewriteImageSources:
 
     def test_roundtrip_extract_then_rewrite(self) -> None:
         html = '<img src="a.png"><img src="a.png">'
-        refs = extract_local_images(html, Path("."))
+        refs = extract_local_images(html, Path())
         src_map = {
             ref.src: f"?entryPoint=attachment&id={i}" for i, ref in enumerate(refs)
         }

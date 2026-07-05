@@ -29,6 +29,7 @@ import mimetypes
 from pathlib import Path
 
 from dotenv import load_dotenv
+from tqdm import tqdm
 
 from .data_types import Article, Category, LocalImageRef
 from .espo_api_client import EspoAPI
@@ -39,7 +40,6 @@ from .markdown_utils import (
     resolve_title,
     rewrite_image_sources,
 )
-from tqdm import tqdm
 from .translate import DEFAULT_SOURCE_LANG, translate_all
 from .utils import require_env
 
@@ -73,20 +73,22 @@ def discover_articles(articles_dir: Path) -> list[tuple[Path, str]]:
     return found
 
 
-def get_existing_records(
-    client: EspoAPI, entity_type: str, key_field: str = "name"
-) -> dict[str, str]:
-    """Fetch all records for an entity type. Returns {name: id} mapping."""
+def get_existing_categories(client: EspoAPI) -> dict[str, str]:
+    """Fetch all Knowledge Base categories, returning a ``{name: id}`` mapping.
+
+    Pages through ``KnowledgeBaseCategory`` and parses each record with
+    :meth:`Category.from_api`.
+    """
     existing: dict[str, str] = {}
     offset = 0
     limit = 200
     while True:
         params = {
-            "select": f"id,{key_field}",
+            "select": "id,name",
             "offset": offset,
             "maxSize": limit,
         }
-        response = client.request("GET", entity_type, params)
+        response = client.request("GET", CATEGORY_ENTITY, params)
         records = response.get("list", [])
         if not records:
             break
@@ -224,7 +226,7 @@ def run_publish(dry_run: bool = False) -> None:
     )
 
     logger.info("Fetching existing categories and articles from EspoCRM...")
-    category_ids = get_existing_records(client, CATEGORY_ENTITY)
+    category_ids = get_existing_categories(client)
     existing_articles = get_existing_articles_by_category(client, category_ids)
     logger.info(
         "Found %d categories, %d articles",

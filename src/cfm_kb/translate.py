@@ -21,6 +21,13 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from .glossary import (
+    GlossaryTerm,
+    TerminologyError,
+    find_terminology_issues,
+    glossary_prompt_block,
+    load_glossary,
+)
 from .utils import require_env
 
 logger = logging.getLogger(__name__)
@@ -69,6 +76,7 @@ def translate_markdown(
     target_lang: str,
     deployment: str | None = None,
     client: OpenAI | None = None,
+    glossary: list[GlossaryTerm] | None = None,
 ) -> Path:
     """Translate a Markdown file from ``source_lang`` to ``target_lang``.
 
@@ -86,6 +94,8 @@ def translate_markdown(
         deployment: Azure OpenAI chat deployment name. Falls back to the
             AZURE_OPENAI_DEPLOYMENT environment variable.
         client: Optional pre-built OpenAI client (mainly for reuse/testing).
+        glossary: Optional glossary terms; the ones present in the source are
+            injected into the prompt so the model uses the agreed wording.
 
     Returns:
         The path to the written translated file.
@@ -103,12 +113,12 @@ def translate_markdown(
     instructions = SYSTEM_PROMPT.format(
         source_lang=source_lang, target_lang=target_lang
     )
+    if glossary:
+        instructions += glossary_prompt_block(md_text, target_lang, glossary)
     if existing_translation:
         instructions += EXISTING_TRANSLATION_GUIDANCE.format(target_lang=target_lang)
         user_input = (
-            f"{md_text}\n\n"
-            f"--- EXISTING TRANSLATION ---\n\n"
-            f"{existing_translation}"
+            f"{md_text}\n\n--- EXISTING TRANSLATION ---\n\n{existing_translation}"
         )
     else:
         user_input = md_text
@@ -156,6 +166,7 @@ def translate_all(
     deployment: str | None = None,
     dry_run: bool = False,
     only_missing: bool = False,
+    source_files: list[Path] | None = None,
 ) -> int:
     """Translate every Markdown file in the source language folder into each
     target language folder, mirroring the relative path and file name.
@@ -164,6 +175,11 @@ def translate_all(
     to the model as reference to keep terminology consistent), unless
     ``only_missing`` is set, in which case existing translations are left
     untouched and only missing files are created.
+
+    After each file is translated it is checked against the domain glossary; if
+    any agreed term is missing from a translation, all such issues across the run
+    are collected and a :class:`~cfm_kb.glossary.TerminologyError` is raised so
+    the run fails and the affected files can be reviewed by a human.
 
     Args:
         articles_dir: Root folder containing per-language subfolders.
@@ -174,10 +190,17 @@ def translate_all(
         dry_run: Print planned actions without calling the API or writing files.
         only_missing: Only create target files that don't exist yet; skip files
             that already have a translation.
+        source_files: When given, restrict translation to these source files
+            (paths under the source language folder). Paths that are not
+            existing Markdown files under that folder are ignored. When None,
+            all source files are translated.
 
     Returns:
         The number of files translated (or that would be translated on a
         dry run).
+
+    Raises:
+        TerminologyError: If any translated file omits an agreed glossary term.
     """
     source_dir = articles_dir / source_lang
     if not source_dir.is_dir():
@@ -189,8 +212,21 @@ def translate_all(
         logger.warning("No target language folders found next to '%s'.", source_lang)
         return 0
 
-    source_files = sorted(source_dir.rglob("*.md"))
-    if not source_files:
+    all_source_files = sorted(source_dir.rglob("*.md"))
+    if source_files is None:
+        selected_files = all_source_files
+    else:
+        wanted = {p.resolve() for p in source_files}
+        selected_files = [p for p in all_source_files if p.resolve() in wanted]
+        if not selected_files:
+            logger.warning(
+                "None of the %d specified file(s) are Markdown files under %s; "
+                "nothing to translate.",
+                len(source_files),
+                source_dir,
+            )
+            return 0
+    if not selected_files:
         logger.warning("No Markdown files found in %s", source_dir)
         return 0
 
@@ -199,10 +235,13 @@ def translate_all(
     # publish step with only_missing=True) run without Azure credentials when
     # every translation already exists.
     client = None
+    glossary = load_glossary()
 
     translated = 0
-    for src_path in source_files:
+    terminology_issues: list[str] = []
+    for src_path in selected_files:
         rel = src_path.relative_to(source_dir)
+        source_text = src_path.read_text(encoding="utf-8")
         for target_lang in target_langs:
             target_path = articles_dir / target_lang / rel
             if only_missing and target_path.exists():
@@ -227,10 +266,24 @@ def translate_all(
                 target_lang=target_lang,
                 deployment=deployment,
                 client=client,
+                glossary=glossary,
             )
             translated += 1
+            issues = find_terminology_issues(
+                source_text,
+                target_path.read_text(encoding="utf-8"),
+                target_lang,
+                glossary,
+            )
+            terminology_issues.extend(
+                f"{target_lang}/{rel.as_posix()}: {issue}" for issue in issues
+            )
 
     logger.info("Done. Translated: %d", translated)
+    if terminology_issues:
+        for issue in terminology_issues:
+            logger.error("terminology: %s", issue)
+        raise TerminologyError(terminology_issues)
     return translated
 
 

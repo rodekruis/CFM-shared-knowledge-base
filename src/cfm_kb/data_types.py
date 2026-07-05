@@ -1,9 +1,10 @@
-"""Typed containers for EspoCRM Knowledge Base records.
+"""Typed containers for the Knowledge Base pipeline.
 
-Raw EspoCRM API responses and outgoing payloads are parsed to / from these
+EspoCRM API responses and outgoing payloads are parsed to / from these
 dataclasses at the boundary so the rest of the pipeline never passes raw dicts
 around. Serialization to the API payload lives in ``to_dict`` (camelCase field
-names, matching the EspoCRM DTOs).
+names, matching the EspoCRM DTOs). Configuration types (e.g. the translation
+glossary) also live here as frozen dataclasses.
 """
 
 from __future__ import annotations
@@ -21,7 +22,7 @@ class Category:
     id: str | None = None
 
     @classmethod
-    def from_api(cls, raw: dict[str, Any]) -> "Category":
+    def from_api(cls, raw: dict[str, Any]) -> Category:
         """Parse a raw EspoCRM category record into a ``Category``."""
         name = raw.get("name")
         if not name:
@@ -60,3 +61,20 @@ class LocalImageRef:
 
     src: str
     path: Path
+
+
+@dataclass(frozen=True)
+class GlossaryTerm:
+    """A single domain-glossary entry used to keep terminology consistent.
+
+    Attributes:
+        id: Stable identifier for the term (used in messages).
+        source_forms: English forms whose presence in a source article triggers
+            the rule (e.g. singular and plural).
+        translations: Mapping of target language name to the accepted target
+            forms; the first form is the preferred one used in prompts.
+    """
+
+    id: str
+    source_forms: tuple[str, ...]
+    translations: dict[str, tuple[str, ...]]

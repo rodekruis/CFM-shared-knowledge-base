@@ -1,14 +1,18 @@
 name: Translate and Publish Knowledge Base
-# Translates the English articles into the other language folders, commits the
-# results, and then publishes all articles to EspoCRM. Translation always runs
-# before publishing so newly generated translations are published too.
-# On pull requests only a publish dry-run runs (no translation, no writes).
+# Translates the English articles that changed into the other language folders,
+# commits the results, and then publishes all articles to EspoCRM. Translation
+# runs before publishing so newly generated translations are published too. It
+# fires when something under articles/English changed (translating only those
+# files) or when the glossary changed (retranslating everything, since a term
+# change can affect any article); a manual run also retranslates everything. On
+# pull requests only a publish dry-run runs (no translation, no writes).
 on:
   push:
     branches:
       - main
     paths:
       - "articles/**"
+      - "glossary.json"
       - "src/**"
       - "tests/**"
       - "pyproject.toml"
@@ -44,11 +48,14 @@ jobs:
       - name: Install dependencies
         run: uv sync --locked
 
-      # Check if code changed.
-      - name: Detect code changes
+      # Detect which paths changed. `list-files: shell` also emits a
+      # shell-quoted list of the changed files per filter (e.g.
+      # `english_files`) so we can translate only what changed.
+      - name: Detect changes
         uses: dorny/paths-filter@v3
         id: changes
         with:
+          list-files: shell
           filters: |
             code:
               - 'src/**'
@@ -56,20 +63,48 @@ jobs:
               - 'pyproject.toml'
               - 'uv.lock'
               - '.github/workflows/publish-kb.yml'
+            english:
+              - 'articles/English/**'
+            glossary:
+              - 'glossary.json'
 
-      # If code changed, run the test suite; skip the rest if tests fail.
+      # If code changed, lint, type-check, and run the test suite; skip the rest
+      # if any of them fail.
+      - name: Lint and format check
+        if: steps.changes.outputs.code == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+      - name: Type check
+        if: steps.changes.outputs.code == 'true' || github.event_name == 'workflow_dispatch'
+        run: uv run ty check
+
       - name: Run tests
         if: steps.changes.outputs.code == 'true' || github.event_name == 'workflow_dispatch'
         run: uv run python -m pytest
 
-      # Skip translation (and its writes) on pull requests.
-      - name: Translate articles
-        if: github.event_name != 'pull_request'
+      # Translate the English articles that changed (skip entirely on pull
+      # requests and when nothing relevant changed). When the glossary changed
+      # or on a manual `workflow_dispatch` run, retranslate every article since
+      # a term change can affect any of them.
+      - name: Translate changed articles
+        if: >-
+          github.event_name != 'pull_request' &&
+          (steps.changes.outputs.english == 'true' ||
+           steps.changes.outputs.glossary == 'true' ||
+           github.event_name == 'workflow_dispatch')
         env:
           AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT }}
-        run: uv run cfm-kb translate
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || \
+             [ "${{ steps.changes.outputs.glossary }}" = "true" ]; then
+            uv run cfm-kb translate
+          else
+            uv run cfm-kb translate ${{ steps.changes.outputs.english_files }}
+          fi
 
       - name: Commit translations
         if: github.event_name != 'pull_request'

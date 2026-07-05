@@ -2,45 +2,45 @@
  
 ### 1. Propósito
  
-Garantizar que la retroalimentación clasificada como sensible por la Sociedad Nacional (NS) se gestione de forma segura, coherente y únicamente por personas autorizadas designadas.
+Para garantizar que la retroalimentación clasificada como sensible por la Sociedad Nacional (SN) se gestione de forma segura, coherente y únicamente por personas autorizadas designadas.
  
 ### 2. Definición
  
-La retroalimentación sensible es una categoría de retroalimentación definida por la Sociedad Nacional (NS), que solo puede ser gestionada por personas responsables específicamente designadas.
+La retroalimentación sensible es una categoría de retroalimentación definida por la Sociedad Nacional (SN), que solo puede ser gestionada por personas responsables específicamente designadas.
  
 La retroalimentación sensible puede clasificarse de diferentes maneras, pero aquí hay 2 distinciones principales que se deben tener en cuenta, ya que el seguimiento se realizará de manera diferente:
  
-- Incumplimientos del código de conducta (ejemplo: corrupción/fraude/VBG cometidos por personal o voluntarios de la Cruz Roja)
+- Incumplimientos del código de conducta (ejemplo: corrupción/fraude/VBG cometidos por personal o voluntariado de la Cruz Roja)
 - Retroalimentación que es sensible para la situación personal de alguien (ejemplo: salud, estigma, violencia doméstica).
 
-### 3. Funciones y Responsabilidades
+### 3. Roles y Responsabilidades
  
 - **Recolector de Retroalimentación**
   - Registra la retroalimentación en Kobo.
   - Marca la retroalimentación como sensible cuando corresponda.
 - **Gestor de Retroalimentación**
   - Revisa la retroalimentación entrante.
-  - Confirma si la retroalimentación es sensible según las definiciones de la NS.
+  - Confirma si la retroalimentación es sensible según las definiciones de la SN.
   - Asigna un Gestor de Retroalimentación Sensible designado.
   - Garantiza que se realice el seguimiento.
-  - Configuraciones de cuenta de usuario: *[capturas de pantalla: ajustes de rol/permisos]*
+  - Configuraciones de la cuenta de usuario: *[capturas de pantalla: ajustes de rol/permisos]*
 - **Creador y Editor de Retroalimentación (Persona Autorizada – Gestor de Retroalimentación Sensible)**
   - Gestiona el caso de principio a fin.
   - Garantiza el seguimiento y la documentación adecuados.
   - Actualiza el estado y cierra el caso.
-  - Configuraciones de cuenta de usuario: *[capturas de pantalla: ajustes de rol/permisos]*
+  - Configuraciones de la cuenta de usuario: *[capturas de pantalla: ajustes de rol/permisos]*
 - **Sistema (Kobo / EspoCRM)**
   - Establece automáticamente la prioridad en *Alta* cuando la retroalimentación se marca como sensible.
-  - Autoriza automáticamente a los Gestores de Retroalimentación para gestionar retroalimentación sensible (según los roles/permisos definidos por la NS).
+  - Autoriza automáticamente a los Gestores de Retroalimentación para gestionar retroalimentación sensible (según los roles/permisos definidos por la SN).
   - Verifica que cualquier persona asignada esté autorizada para gestionar retroalimentación sensible.
-  - Establece el estado del caso en *En Progreso* al momento de la asignación.
+  - Establece el estado del caso en *En Progreso* al asignarlo.
   - Envía notificaciones y recordatorios.
 
 ### 4. Procedimiento
  
-#### Paso 1: Recolección y Registro de la Retroalimentación
+#### Paso 1: Recolección y Registro de Retroalimentación
  
-- La retroalimentación se recopila y se registra en Kobo.
+- La retroalimentación se recopila y registra en Kobo.
 - Si corresponde, el Recolector de Retroalimentación marca la retroalimentación como **sensible**.
 - Si no se sabe si la retroalimentación es sensible, dejar en blanco.
 
@@ -54,7 +54,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
  
 - El Gestor de Retroalimentación:
   - Revisa la retroalimentación.
-  - Confirma si cumple con la definición de retroalimentación sensible de la NS.
+  - Confirma si cumple con la definición de la SN de retroalimentación sensible.
 - Si **no es sensible**:
   - Desmarcar como sensible.
   - Restablecer la prioridad.
@@ -72,7 +72,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 - El Gestor de Retroalimentación Sensible asignado:
   - Recibe una notificación por correo electrónico y EspoCRM.
 - El sistema:
-  - Envía recordatorios diarios hasta que el caso sea actualizado.
+  - Envía recordatorios diarios hasta que el caso se actualice.
 
 #### Paso 6: Gestión del Caso
  
@@ -96,13 +96,13 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
  
 - La Sociedad Nacional define qué constituye retroalimentación sensible.
 - Solo las personas autorizadas pueden gestionar retroalimentación sensible.
-- La retroalimentación sensible está oculta para todos los demás usuarios, excepto para los usuarios autorizados.
+- La retroalimentación sensible está oculta para todos los demás usuarios excepto para los usuarios autorizados.
 - Todos los casos de retroalimentación sensible se tratan como de **alta prioridad**.
-- El seguimiento oportuno es obligatorio y se monitorea activamente.
+- El seguimiento oportuno es obligatorio y se supervisa activamente.
 
 ### 6. Riesgos
  
-El incumplimiento de este SOP puede resultar en:
+El incumplimiento de este POE puede dar lugar a:
  
 - Retrasos en la gestión de retroalimentación de alto riesgo.
 - Incumplimientos de la confidencialidad o de los protocolos de protección.
@@ -113,4 +113,4 @@ El incumplimiento de este SOP puede resultar en:
  
 ### 8. Validación
  
-- El protocolo necesita revisión antes de finales de 2026 para asegurar que siga siendo efectivo.
+- El protocolo debe revisarse antes de finales de 2026 para asegurarse de que siga siendo eficaz.

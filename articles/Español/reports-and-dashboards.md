@@ -2,14 +2,14 @@
  
 Los informes y el panel te ayudan a:
  
-- Entender **qué comentarios comparten las comunidades**
+- Entender **qué retroalimentación comparten las comunidades**
 - Identificar **tendencias y problemas recurrentes**
-- Monitorear **cómo (qué tan bien/rápido) se está gestionando la retroalimentación**
+- Monitorear **cómo (de bien/rápido) se está gestionando la retroalimentación**
 - Apoyar **la toma de decisiones y las mejoras del programa**
 
 ### Qué puedes ver en los Informes y el Panel
  
-#### 1. Volumen de Retroalimentación
+#### 1. Volumen de retroalimentación
  
 - Número total de entradas de retroalimentación
 - Tendencias a lo largo del tiempo (diarias/semanales/mensuales)
@@ -21,7 +21,7 @@ Puedes usar esto para:
 #### 2. Temas / Categorías (Codificación)
  
 - Principales sectores que están recibiendo retroalimentación (p. ej. efectivo, refugio, WASH)
-- Subtemas (basados en los niveles de codificación)
+- Subtemas (basados en niveles de codificación)
 Puedes usar esto para:
  
 - Identificar problemas clave y problemas recurrentes
@@ -34,7 +34,7 @@ Puedes usar esto para:
 - Identificar de dónde proviene la retroalimentación
 - Comparar áreas (p. ej. una región tiene más quejas)
 
-#### 4. Canal de Retroalimentación
+#### 4. Canal de retroalimentación
  
 - Cómo se recopiló la retroalimentación (teléfono, cara a cara, etc.)
 Puedes usar esto para:
@@ -42,11 +42,11 @@ Puedes usar esto para:
 - Entender qué canales prefieren las comunidades
 - Mejorar la estrategia de alcance
 
-#### 5. Gestión de la Retroalimentación (Estado y Respuesta)
+#### 5. Gestión de la retroalimentación (Estado y Respuesta)
  
 Puedes ver:
  
-- Retroalimentación Abierta / En Progreso / Cerrada
+- Retroalimentación Abierta / En progreso / Cerrada
 - Tiempo de respuesta
 - Seguimiento necesario
 Puedes usar esto para:
@@ -83,7 +83,7 @@ Cuando estés en el panel, puedes hacer clic en los diferentes informes para obt
 - Haz clic en 'View report'.
 *[Capturas de pantalla: opciones del menú del mosaico del informe]*
  
-Entonces se abrirá la siguiente página lateral.
+La siguiente página lateral se abrirá entonces.
  
 *[Captura de pantalla: página lateral de detalle del informe]*
  
@@ -96,24 +96,24 @@ Puedes usar los informes para:
 - Ir a los formularios de retroalimentación conectados
 - Profundizar en problemas específicos
 - Exportar datos para compartir hallazgos
-*Nota: el nombre del proyecto debe escribirse correctamente al filtrar por proyectos en el informe. La lista final de títulos de proyectos está disponible en el Kobo Form y puede ser compartida por el/la Gerente de Retroalimentación.*
+*Nota: el nombre del proyecto debe escribirse correctamente al filtrar por proyectos en el informe. La lista final de títulos de proyectos está disponible en el Kobo Form y puede ser compartida por el Feedback Manager.*
  
 ### Convertir los hallazgos en acción
  
-El paso más importante al usar los informes y el panel: pregúntate siempre **"¿Qué deberíamos hacer de manera diferente en base a esto?"**
+El paso más importante al usar los informes y el panel: pregúntate siempre **"¿Qué deberíamos hacer de manera diferente basándonos en esto?"**
  
 Ejemplos:
  
 - Muchas preguntas sobre elegibilidad → mejorar la comunicación sobre la elegibilidad
 - Quejas sobre retrasos → ajustar procesos
-- Problema repetido en un área → dar seguimiento localmente
+- Problema repetido en un área → hacer seguimiento localmente
 
 ### Buenas prácticas
  
-- Revisa el panel **regularmente**
-- Comparte hallazgos con los **equipos de programa y sector**
-- Usa tanto **números como ejemplos (citas)**
-- Mantén la retroalimentación vinculada a la **toma de decisiones**
+- Revisar el panel **regularmente**
+- Compartir hallazgos con los **equipos de programa y sector**
+- Usar tanto **números como ejemplos (citas)**
+- Mantener la retroalimentación vinculada a la **toma de decisiones**
 El sistema no es solo para informes. Es una herramienta para:
  
 - Escuchar a las comunidades
