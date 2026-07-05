@@ -12,6 +12,8 @@ Las Sociedades Nacionales tienen la capacidad de acceder a la Plataforma de Gest
 
 Dentro de la estructura de Equipo por Sociedad Nacional, varios usuarios de la Sociedad Nacional pueden vincularse al Equipo correspondiente para obtener acceso. Dependiendo de los roles y permisos específicos del usuario, este puede crear, leer, editar y/o eliminar datos de retroalimentación.
 
+---
+
 ### Roles de la Sociedad Nacional
 
 #### Supervisor de Retroalimentación
@@ -74,3 +76,37 @@ Lo que puede hacer en la plataforma:
 
 - Acceso al panel para informes
 - Acceso de alto nivel a registros de retroalimentación sin PII
+
+---
+
+### Roles de Soporte
+ 
+#### Soporte al Cliente
+ 
+Este rol está designado para el Equipo de Datos 510 de la Cruz Roja Neerlandesa. El equipo de Soporte al Cliente abordará y solucionará cualquier problema que enfrente la SN al utilizar la Plataforma Regional de Gestión de Retroalimentación.
+ 
+Lo que se puede esperar de ellos:
+ 
+- Soporte de nivel 1 y 2
+  - Nivel 1: invitar usuarios, restablecer contraseñas, ayudar a los usuarios a navegar por la Interfaz de Usuario (UI), explicar cómo EspoCRM está (o no está) pensado para usarse, actualizar un campo
+- Solución de errores
+- Soporte a usuarios
+
+#### Administrador
+ 
+Este rol está designado para el Equipo de Datos 510 de la Cruz Roja Neerlandesa.
+ 
+Lo que se puede esperar de ellos:
+ 
+- Soporte de nivel 1, 2 y 3
+  - Nivel 1: invitar usuarios, restablecer contraseñas, ayudar a los usuarios a navegar por la Interfaz de Usuario (UI), explicar cómo EspoCRM está (o no está) pensado para usarse, actualizar un campo
+  - Nivel 2: agregar un nuevo campo, crear una nueva entidad, relacionar 2 entidades entre sí, automatizar una tarea (diagramas de flujo)
+  - Nivel 3: configurar el servidor en el que se aloja EspoCRM, instalar/actualizar EspoCRM, crear/restaurar una copia de seguridad, actualizar la configuración de red.
+- Actualizaciones y configuraciones de la plataforma
+- Agregar Equipos de Sociedades Nacionales e incorporarlos a la plataforma
+- Desarrollar informes y mantener el panel de la página de inicio
+- Mantener diagramas de flujo e integraciones de API
+
+#### Recolector de Datos de Retroalimentación (Ver Formulario Kobo)
+ 
+Este rol no es un rol de EspoCRM, sino únicamente un rol en la cuenta de KoboToolbox del recolector de datos de retroalimentación de la SN que necesita acceso sin conexión al formulario de KoboToolbox. Este rol puede solicitarse a través del punto focal de la SN (Gerente de Retroalimentación), que tiene acceso al formulario.

@@ -12,6 +12,8 @@ Les Sociétés Nationales ont la possibilité d'accéder à la Plateforme de Ges
 
 Au sein de la structure d'Équipe par Société Nationale, plusieurs utilisateurs de la Société Nationale peuvent être liés à l'Équipe correspondante pour y accéder. Selon les rôles et permissions spécifiques de l'utilisateur, celui-ci peut créer, lire, modifier et/ou supprimer des données de retour d'information.
 
+---
+
 ### Rôles de la Société Nationale
 
 #### Superviseur des retours d'information
@@ -74,3 +76,37 @@ Ce qu'il peut faire dans la plateforme :
 
 - Accès au tableau de bord pour le reporting
 - Accès de haut niveau aux enregistrements de retour d'information sans PII
+
+---
+
+### Rôles de support
+ 
+#### Support client
+ 
+Ce rôle est attribué à la Data Team 510 de la Croix-Rouge néerlandaise. L'équipe de Support client traitera et résoudra tout problème rencontré par la SN lors de l'utilisation de la Plateforme régionale de Gestion des Retours d'Information.
+ 
+Ce que l'on peut attendre d'eux :
+ 
+- Support de niveau 1 et 2
+  - Niveau 1 : inviter des utilisateurs, réinitialiser des mots de passe, aider les utilisateurs à naviguer dans l'interface utilisateur (UI), expliquer comment EspoCRM est (ou n'est pas) censé être utilisé, mettre à jour un champ
+- Résolution des erreurs
+- Support utilisateur
+
+#### Administrateur
+ 
+Ce rôle est attribué à la Data Team 510 de la Croix-Rouge néerlandaise.
+ 
+Ce que l'on peut attendre d'eux :
+ 
+- Support de niveau 1, 2, 3
+  - Niveau 1 : inviter des utilisateurs, réinitialiser des mots de passe, aider les utilisateurs à naviguer dans l'interface utilisateur (UI), expliquer comment EspoCRM est (ou n'est pas) censé être utilisé, mettre à jour un champ
+  - Niveau 2 : ajouter un nouveau champ, créer une nouvelle entité, relier 2 entités entre elles, automatiser une tâche (organigrammes)
+  - Niveau 3 : configurer le serveur sur lequel EspoCRM est hébergé, installer/mettre à jour EspoCRM, créer/restaurer une sauvegarde, mettre à jour les paramètres réseau.
+- Mises à jour et configurations de la plateforme
+- Ajout des Équipes des Sociétés Nationales et intégration de celles-ci dans la plateforme
+- Développement des rapports et maintenance du tableau de bord de la page d'accueil
+- Maintenance des organigrammes et des intégrations API
+
+#### Collecteur de données de retour d'information (voir le formulaire Kobo)
+ 
+Ce rôle n'est pas un rôle EspoCRM mais uniquement un rôle dans le compte KoboToolbox du collecteur de données de retour d'information de la SN qui a besoin d'un accès hors ligne au formulaire KoboToolbox. Ce rôle peut être demandé par l'intermédiaire du point focal de la SN (Gestionnaire des retours d'information) qui a accès au formulaire.
