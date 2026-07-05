@@ -18,17 +18,17 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 - **Recolector de Retroalimentación**
   - Registra la retroalimentación en Kobo.
   - Marca la retroalimentación como sensible cuando corresponda.
-- **Gestor de Retroalimentación**
+- **Supervisor de Retroalimentación**
   - Revisa la retroalimentación entrante.
   - Confirma si la retroalimentación es sensible según las definiciones de la SN.
-  - Asigna un Gestor de Retroalimentación Sensible designado.
+  - Asigna un **punto focal de Retroalimentación Sensible** designado (ver abajo).
   - Garantiza que se realice el seguimiento.
-  - Configuraciones de la cuenta de usuario: *[capturas de pantalla: ajustes de rol/permisos]*
-- **Creador y Editor de Retroalimentación (Persona Autorizada – Gestor de Retroalimentación Sensible)**
+  - Configuraciones de la cuenta de usuario.
+- **Gestor de Retroalimentación**
   - Gestiona el caso de principio a fin.
   - Garantiza el seguimiento y la documentación adecuados.
   - Actualiza el estado y cierra el caso.
-  - Configuraciones de la cuenta de usuario: *[capturas de pantalla: ajustes de rol/permisos]*
+  - Configuraciones de la cuenta de usuario.
 - **Sistema (Kobo / EspoCRM)**
   - Establece automáticamente la prioridad en *Alta* cuando la retroalimentación se marca como sensible.
   - Autoriza automáticamente a los Gestores de Retroalimentación para gestionar retroalimentación sensible (según los roles/permisos definidos por la SN).
@@ -42,17 +42,13 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
  
 - La retroalimentación se recopila y registra en Kobo.
 - Si corresponde, el Recolector de Retroalimentación marca la retroalimentación como **sensible**.
-- Si no se sabe si la retroalimentación es sensible, dejar en blanco.
+- Si la retroalimentación se marca como sensible, el sistema automáticamente:
+  - Establece su prioridad en **Alta**.
+  - La asigna al Supervisor de Retroalimentación para su revisión.
 
-#### Paso 2: Acciones Automáticas del Sistema
+#### Paso 2: Revisión y Validación
  
-- El sistema automáticamente:
-  - Establece la prioridad en **Alta**.
-  - Dirige la retroalimentación para su revisión.
-
-#### Paso 3: Revisión y Validación
- 
-- El Gestor de Retroalimentación:
+- El Supervisor de Retroalimentación:
   - Revisa la retroalimentación.
   - Confirma si cumple con la definición de la SN de retroalimentación sensible.
 - Si **no es sensible**:
@@ -60,36 +56,34 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
   - Restablecer la prioridad.
   - Procesar según los procedimientos estándar de retroalimentación.
 - Si **es sensible**:
-  - Continuar con el Paso 4.
+  - Continuar con el Paso 3.
 
-#### Paso 4: Asignación
+#### Paso 3: Asignación
  
-- El Gestor de Retroalimentación asigna el caso a un **Gestor de Retroalimentación Sensible** designado.
+- El Supervisor de Retroalimentación asigna el caso a un **punto focal de Retroalimentación Sensible** designado.
 - El sistema establece el estado del caso en **En Progreso**.
 
-#### Paso 5: Notificación y Monitoreo
+#### Paso 4: Notificación y Monitoreo
  
-- El Gestor de Retroalimentación Sensible asignado:
-  - Recibe una notificación por correo electrónico y EspoCRM.
-- El sistema:
-  - Envía recordatorios diarios hasta que el caso se actualice.
+- El punto focal de Retroalimentación Sensible recibe una notificación por correo electrónico y EspoCRM.
+- El sistema le envía recordatorios diarios hasta que el caso se actualice.
 
-#### Paso 6: Gestión del Caso
+#### Paso 5: Gestión del Caso
  
-- El Gestor de Retroalimentación Sensible:
+- El punto focal de Retroalimentación Sensible:
   - Revisa el caso.
   - Toma las medidas apropiadas.
   - Sigue los procedimientos operativos estándar internos para la gestión de casos sensibles.
   - Comparte la retroalimentación internamente **si** es necesario y está permitido.
 
-#### Paso 7: Actualizaciones de Estado
+#### Paso 6: Actualizaciones de Estado
  
-- El Gestor de Retroalimentación Sensible actualiza el estado del caso a medida que avanza el trabajo.
+- El punto focal de Retroalimentación Sensible actualiza el estado del caso a medida que avanza el trabajo.
 
-#### Paso 8: Cierre
+#### Paso 7: Cierre
  
 - Una vez que el caso se resuelve:
-  - El Gestor de Retroalimentación Sensible marca el caso como **cerrado**.
+  - El punto focal de Retroalimentación Sensible marca el caso como **cerrado**.
   - El cierre se confirma en el sistema de resumen.
 
 ### 5. Principios Clave

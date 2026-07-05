@@ -123,6 +123,69 @@ class TestGlossaryPromptBlock:
         assert "Société nationale" in block
 
 
+# Arabic glossary slice: the accepted forms list only the natural definite
+# spellings; the normalizer is expected to also match construct-state and
+# clitic-prefixed variants.
+ARABIC_GLOSSARY = [
+    GlossaryTerm(
+        id="focal-point",
+        source_forms=("focal point", "focal points"),
+        translations={"العربية": ("نقطة الاتصال",)},
+    ),
+    GlossaryTerm(
+        id="national-society",
+        source_forms=("National Society", "National Societies"),
+        translations={"العربية": ("الجمعية الوطنية",)},
+    ),
+]
+
+
+class TestArabicNormalization:
+    def test_construct_state_drops_article(self) -> None:
+        # Glossary has "نقطة الاتصال"; construct state "نقطة اتصال الملاحظات"
+        # drops the article from the first noun but must still match.
+        issues = find_terminology_issues(
+            "Assign a focal point.",
+            "يعيّن نقطة اتصال الملاحظات.",
+            "العربية",
+            ARABIC_GLOSSARY,
+        )
+        assert issues == []
+
+    def test_fused_preposition_article_matches(self) -> None:
+        # "للجمعية الوطنية" = ل + (ال elided) + جمعية ... must match
+        # "الجمعية الوطنية".
+        issues = find_terminology_issues(
+            "For the National Society.",
+            "للجمعية الوطنية.",
+            "العربية",
+            ARABIC_GLOSSARY,
+        )
+        assert issues == []
+
+    def test_diacritics_are_ignored(self) -> None:
+        # Fully vocalized spelling still matches the bare glossary form.
+        issues = find_terminology_issues(
+            "The National Society.",
+            "الجمْعِية الوطنِية.",
+            "العربية",
+            ARABIC_GLOSSARY,
+        )
+        assert issues == []
+
+    def test_wrong_translation_still_flagged(self) -> None:
+        # A genuinely different term (no focal-point form) must still fail so the
+        # guardrail is not weakened by the looser matching.
+        issues = find_terminology_issues(
+            "Assign a focal point.",
+            "يعيّن مدير الملاحظات.",
+            "العربية",
+            ARABIC_GLOSSARY,
+        )
+        assert len(issues) == 1
+        assert "focal point" in issues[0]
+
+
 class TestLoadGlossary:
     def test_shipped_glossary_loads(self) -> None:
         terms = load_glossary(DEFAULT_GLOSSARY_PATH)

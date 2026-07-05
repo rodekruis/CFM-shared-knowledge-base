@@ -18,17 +18,17 @@ Le retour d'information sensible peut être classé de différentes manières, m
 - **Collecteur de retour d'information**
   - Enregistre le retour d'information dans Kobo.
   - Marque le retour d'information comme sensible, le cas échéant.
-- **Gestionnaire de retour d'information**
+- **Superviseur du retour d'information**
   - Examine les retours d'information entrants.
   - Confirme si le retour d'information est sensible selon les définitions de la SN.
-  - Assigne un gestionnaire désigné du retour d'information sensible.
+  - Assigne un **point focal du retour d'information sensible** désigné (voir ci-dessous).
   - Veille à ce que le suivi ait lieu.
-  - Configurations du compte utilisateur : *[captures d'écran : paramètres de rôle/autorisation]*
-- **Créateur et éditeur de retour d'information (Personne autorisée – Gestionnaire du retour d'information sensible)**
+  - Configurations du compte utilisateur.
+- **Gestionnaire du retour d'information**
   - Gère le cas de bout en bout.
   - Veille à un suivi et à une documentation appropriés.
   - Met à jour le statut et clôture le cas.
-  - Configurations du compte utilisateur : *[captures d'écran : paramètres de rôle/autorisation]*
+  - Configurations du compte utilisateur.
 - **Système (Kobo / EspoCRM)**
   - Définit automatiquement la priorité sur *Élevée* lorsque le retour d'information est marqué comme sensible.
   - Autorise automatiquement les gestionnaires de retour d'information à traiter les retours d'information sensibles (sur la base des rôles/autorisations définis par la SN).
@@ -42,17 +42,13 @@ Le retour d'information sensible peut être classé de différentes manières, m
  
 - Le retour d'information est collecté et enregistré dans Kobo.
 - Le cas échéant, le collecteur de retour d'information marque le retour d'information comme **sensible**.
-- S'il n'est pas connu si le retour d'information est sensible, laisser vide.
+- Si le retour d'information est marqué comme sensible, le système automatiquement :
+  - Définit sa priorité sur **Élevée**.
+  - L'assigne au superviseur du retour d'information pour examen.
 
-#### Étape 2 : Actions automatiques du système
+#### Étape 2 : Examen et validation
  
-- Le système :
-  - Définit la priorité sur **Élevée**.
-  - Achemine le retour d'information pour examen.
-
-#### Étape 3 : Examen et validation
- 
-- Le gestionnaire de retour d'information :
+- Le superviseur du retour d'information :
   - Examine le retour d'information.
   - Confirme s'il répond à la définition de la SN d'un retour d'information sensible.
 - Si **non sensible** :
@@ -60,36 +56,34 @@ Le retour d'information sensible peut être classé de différentes manières, m
   - Réinitialiser la priorité.
   - Traiter selon les procédures standard de retour d'information.
 - Si **sensible** :
-  - Passer à l'étape 4.
+  - Passer à l'étape 3.
 
-#### Étape 4 : Assignation
+#### Étape 3 : Assignation
  
-- Le gestionnaire de retour d'information assigne le cas à un **gestionnaire désigné du retour d'information sensible**.
+- Le superviseur du retour d'information assigne le cas à un **point focal du retour d'information sensible** désigné.
 - Le système définit le statut du cas sur **En cours**.
 
-#### Étape 5 : Notification et suivi
+#### Étape 4 : Notification et suivi
  
-- Le gestionnaire du retour d'information sensible assigné :
-  - Reçoit une notification par e-mail et dans EspoCRM.
-- Le système :
-  - Envoie des rappels quotidiens jusqu'à ce que le cas soit mis à jour.
+- Le point focal du retour d'information sensible reçoit une notification par e-mail et dans EspoCRM.
+- Le système lui envoie des rappels quotidiens jusqu'à ce que le cas soit mis à jour.
 
-#### Étape 6 : Traitement du cas
+#### Étape 5 : Traitement du cas
  
-- Le gestionnaire du retour d'information sensible :
+- Le point focal du retour d'information sensible :
   - Examine le cas.
   - Prend les mesures appropriées.
   - Suit les procédures opérationnelles standard internes pour le traitement des cas sensibles.
   - Partage le retour d'information en interne **si** nécessaire et autorisé.
 
-#### Étape 7 : Mises à jour du statut
+#### Étape 6 : Mises à jour du statut
  
-- Le gestionnaire du retour d'information sensible met à jour le statut du cas à mesure que le travail progresse.
+- Le point focal du retour d'information sensible met à jour le statut du cas à mesure que le travail progresse.
 
-#### Étape 8 : Clôture
+#### Étape 7 : Clôture
  
 - Une fois le cas résolu :
-  - Le gestionnaire du retour d'information sensible marque le cas comme **clôturé**.
+  - Le point focal du retour d'information sensible marque le cas comme **clôturé**.
   - La clôture est confirmée dans le système d'aperçu.
 
 ### 5. Principes clés

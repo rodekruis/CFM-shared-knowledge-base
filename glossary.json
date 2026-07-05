@@ -25,7 +25,7 @@
       "source": ["feedback"],
       "translations": {
         "Français": ["retour d'information", "retours d'information"],
-        "Español": ["retroalimentación"],
+        "Español": ["retroalimentación", "retroalimentaciones"],
         "العربية": ["الملاحظات", "ملاحظات"]
       }
     },

@@ -36,6 +36,56 @@ DEFAULT_GLOSSARY_PATH = Path("glossary.json")
 # Markdown "smarty" extension in the translated articles.
 _APOSTROPHES = ("\u2019", "\u2018", "\u02bc", "\u00b4", "`")
 
+# --- Arabic normalization -------------------------------------------------
+# Arabic attaches morphemes directly onto words, which defeats a plain substring
+# match: the definite article "ال" and proclitic prepositions/conjunctions
+# (و ف ب ك ل) glue onto the front of a word, and Arabic's construct state
+# (إضافة) *drops* "ال" from a non-final noun. So the same term surfaces as e.g.
+# "نقطة الاتصال", "نقطة اتصال", or "لنقطة اتصال". Applying the transforms below
+# to BOTH the glossary form and the article text collapses those variants so the
+# substring check keeps working without enumerating every combination. It is a
+# deliberately lightweight, approximate light-stemmer (not full morphology);
+# irregular forms (e.g. broken plurals) must still be listed in the glossary.
+
+# Tashkeel (harakat, tanwin, shadda, sukun), superscript alef, and tatweel: all
+# removed so vocalized and unvocalized spellings match.
+_ARABIC_DIACRITICS = re.compile(
+    "[\u0610-\u061a\u064b-\u065f\u0670\u06d6-\u06dc\u06df-\u06e8\u06ea-\u06ed\u0640]"
+)
+
+# Fold interchangeable Arabic letter shapes to one canonical form so spelling
+# variants match: hamza-carrying alefs and wasla -> bare alef, alef maqsura ->
+# ya, ta marbuta -> ha.
+_ARABIC_LETTER_MAP = str.maketrans(
+    {
+        "\u0622": "\u0627",  # آ -> ا
+        "\u0623": "\u0627",  # أ -> ا
+        "\u0625": "\u0627",  # إ -> ا
+        "\u0671": "\u0627",  # ٱ -> ا
+        "\u0649": "\u064a",  # ى -> ي
+        "\u0629": "\u0647",  # ة -> ه
+    }
+)
+
+# Leading clitics on a single token: optional conjunction (و/ف), then either the
+# preposition ل fused with the article ("لل", alef elided) or an optional
+# preposition (ب/ك/ل) followed by the optional article "ال". Matches the empty
+# string, so a token with no clitics is left unchanged.
+_ARABIC_CLITICS = re.compile("^(?:[وف])?(?:لل|[بكل]?(?:ال)?)")
+
+
+def _strip_arabic_clitics(token: str) -> str:
+    """Strip a leading Arabic article/proclitic cluster from a single token.
+
+    Returns the token unchanged when nothing (or the whole token) would be
+    stripped, so bare particles like "ال" are not erased.
+    """
+    end = 0
+    if match := _ARABIC_CLITICS.match(token):
+        end = match.end()
+    stripped = token[end:]
+    return stripped if stripped else token
+
 
 class TerminologyError(Exception):
     """Raised when translated articles violate the glossary term base."""
@@ -48,11 +98,19 @@ class TerminologyError(Exception):
 
 
 def _normalize(text: str) -> str:
-    """Lower-case and normalize apostrophes/whitespace for lenient matching."""
+    """Lower-case and normalize apostrophes/whitespace for lenient matching.
+
+    Arabic text is additionally light-stemmed (diacritics and letter-shape
+    variants folded, leading article/proclitics stripped per token) so that
+    definite/indefinite and construct-state spellings of the same term match.
+    """
     text = text.casefold()
     for ch in _APOSTROPHES:
         text = text.replace(ch, "'")
-    return re.sub(r"\s+", " ", text)
+    text = _ARABIC_DIACRITICS.sub("", text)
+    text = text.translate(_ARABIC_LETTER_MAP)
+    text = re.sub(r"\s+", " ", text).strip()
+    return " ".join(_strip_arabic_clitics(token) for token in text.split(" "))
 
 
 def load_glossary(path: Path = DEFAULT_GLOSSARY_PATH) -> list[GlossaryTerm]:
