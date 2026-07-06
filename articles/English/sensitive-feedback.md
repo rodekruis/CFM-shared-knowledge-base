@@ -100,11 +100,7 @@ Failure to follow this SOP may result in:
  
 - Delays in handling high-risk feedback.
 - Breaches of confidentiality or safeguarding protocols.
-
-### 7. Visual of workflow
  
-![Sensitive feedback workflow](../../assets/sensitive-feedback-flow.png)
- 
-### 8. Validation
+### 7. Validation
  
 - Protocol needs review by the end of 2026 to make sure it stays effective.
