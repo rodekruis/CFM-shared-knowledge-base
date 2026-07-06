@@ -65,7 +65,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 
 #### Paso 4: Notificación y Monitoreo
  
-- El punto focal de Retroalimentación Sensible recibe una notificación por correo electrónico y EspoCRM.
+- El punto focal de Retroalimentación Sensible recibe una notificación por correo electrónico y a través de la Plataforma de Gestión de Retroalimentación.
 - El sistema le envía recordatorios diarios hasta que el caso se actualice.
 
 #### Paso 5: Gestión del Caso
