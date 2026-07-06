@@ -1,4 +1,4 @@
-# [TEST] Sensitive Feedback
+# Sensitive Feedback
  
 ### 1. Purpose
  
@@ -15,7 +15,7 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
 
 ### 3. Roles and Responsibilities
  
-- **Feedback Collector**
+- **Feedback Data Collector**
   - Logs feedback in Kobo.
   - Flags feedback as sensitive where applicable.
 - **Feedback Supervisor**
@@ -24,14 +24,14 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
   - Assigns a designated Sensitive Feedback Focal Point (see below).
   - Ensures follow-up takes place.
   - User account configurations.
-- **Feedback Handler**
-  - Handles the case end-to-end.
+- **Sensitive Feedback Focal Point**
+  - Handles the sensitive case end-to-end.
   - Ensures appropriate follow-up and documentation.
   - Updates status and closes the case.
   - User account configurations.
 - **System (Kobo / EspoCRM)**
   - Automatically sets priority to *High* when feedback is marked as sensitive.
-  - Automatically authorizes Feedback Managers for handling sensitive feedback (based on NS-defined roles/permissions).
+  - Automatically authorizes Feedback Supervisor for handling sensitive feedback (based on NS-defined roles/permissions).
   - Verifies that any assigned individual is authorized to handle sensitive feedback.
   - Sets case status to *In Progress* upon assignment.
   - Sends notifications and reminders.
@@ -41,7 +41,7 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
 #### Step 1: Feedback Collection and Registration
  
 - Feedback is collected and logged in Kobo.
-- If applicable, the Feedback Collector marks the feedback as **sensitive**.
+- If applicable, the Feedback Data Collector marks the feedback as **sensitive**.
 - If the feedback is marked as sensitive, the system automatically:
   - Sets its priority to **High**.
   - Assigns it to the Feedback Supervisor for review.
@@ -65,8 +65,8 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
 
 #### Step 4: Notification and Monitoring
  
-- The Sensitive Feedback Focal Point receives notification via email and EspoCRM.
-- The system sends him/her daily reminders until the case is updated.
+- The Sensitive Feedback Focal Point receives notification via email and the Regional Feedback Management Platform.
+- The pltaform sends him/her reminders until the case is updated.
 
 #### Step 5: Case Handling
  
@@ -84,7 +84,7 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
  
 - Once the case is resolved:
   - The Sensitive Feedback Focal Point marks the case as **closed**.
-  - Closure is confirmed in the overview system.
+  - Closure is confirmed in the overview of the platform.
 
 ### 5. Key Principles
  
