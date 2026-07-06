@@ -42,7 +42,7 @@ Le retour d'information sensible peut être classé de différentes manières, m
  
 - Le retour d'information est collecté et enregistré dans Kobo.
 - Le cas échéant, le collecteur de retour d'information marque le retour d'information comme **sensible**.
-- Si le retour d'information est marqué comme sensible, le système automatiquement :
+- Si le retour d'information est marqué comme sensible, la plateforme automatiquement :
   - Définit sa priorité sur **Élevée**.
   - L'assigne au superviseur du retour d'information pour examen.
 
@@ -65,7 +65,7 @@ Le retour d'information sensible peut être classé de différentes manières, m
 
 #### Étape 4 : Notification et suivi
  
-- Le point focal du retour d'information sensible reçoit une notification par e-mail et dans EspoCRM.
+- Le point focal du retour d'information sensible reçoit une notification par e-mail et via la Plateforme de Gestion des Retours d'Information.
 - Le système lui envoie des rappels quotidiens jusqu'à ce que le cas soit mis à jour.
 
 #### Étape 5 : Traitement du cas
