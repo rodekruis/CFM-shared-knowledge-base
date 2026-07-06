@@ -1,4 +1,4 @@
-# [TEST] Cadre de responsabilité des données
+# Cadre de responsabilité des données
  
 ### Objectif
  

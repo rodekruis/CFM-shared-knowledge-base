@@ -1,4 +1,4 @@
-# [TEST] Marco de Responsabilidad de Datos
+# Marco de Responsabilidad de Datos
  
 ### Propósito
  
