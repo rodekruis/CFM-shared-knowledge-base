@@ -15,9 +15,12 @@
       "id": "feedback-management-platform",
       "source": ["Feedback Management Platform"],
       "translations": {
-        "Français": ["Plateforme de Gestion des Retours d'Information"],
-        "Español": ["Plataforma de Gestión de Retroalimentación"],
-        "العربية": ["منصة إدارة الملاحظات"]
+        "Français": ["Plateforme de Gestion des Retours d'Information", "Plateforme Régionale de Gestion des Retours d'Information",
+      "EspoCRM"],
+        "Español": ["Plataforma de Gestión de Retroalimentación", "Plataforma Regional de Gestión de Retroalimentación",
+      "EspoCRM"],
+        "العربية": ["منصة إدارة الملاحظات", ,
+      "EspoCRM"]
       }
     },
     {
