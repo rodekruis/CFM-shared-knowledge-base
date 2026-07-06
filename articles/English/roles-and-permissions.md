@@ -1,14 +1,14 @@
-# [TEST] Roles and permissions
+# Roles and permissions
 
 ### Purpose
 
-Documenting user roles and permissions is essential for ensuring clarity, security, and accountability within the Feedback Management Platform. It will help understand who can access, modify, or manage specific sections of the platform and its data. This will reduce the risk of misconfiguration, unauthorized access, and operational errors. It also supports onboarding, auditing, and compliance by providing a reliable reference for system behavior. 
+Documenting user roles and permissions is essential for ensuring clarity, security, and accountability within the Regional Feedback Management Platform. It will help understand who can access, modify, or manage specific sections of the platform and its data. This will reduce the risk of misconfiguration, unauthorized access, and operational errors. It also supports onboarding, auditing, and compliance by providing a reliable reference for system behavior. 
 
 A more detailed overview of role management can be found in the [EspoCRM official documentation](https://docs.espocrm.com/administration/roles-management/). 
 
 ### Accessing the Feedback Management Platform
 
-National Societies have the ability to access the Feedback Management Platform. Since this is a shared platform, each National Society is assigned to a Team, allowing them access to **ONLY** their feedback data and visualizations.
+National Societies have the ability to access the Regional Feedback Management Platform. Since this is a shared platform, each National Society is assigned to a Team, allowing them access to **ONLY** their feedback data and visualizations.
 
 Within the Team structure per National Society, multiple users from the National Society can be linked to the respective Team for access. Depending on the user specific roles and permissions, the user can create, read, edit, and/or delete feedback data.
 
@@ -34,7 +34,7 @@ What they can do in the platform:
 
 #### Feedback Focal Point
 
-This role is designated for NS members (e.g., CEA, PMER, IM, Branches, hotline operators) that will handle feedback entered into the Feedback Management Platform. 
+This role is designated for NS members (e.g., CEA, PMER, IM, Branches, hotline operators) that will handle feedback entered into the Regional Feedback Management Platform. 
 
 What they can do in the platform:
 
@@ -70,7 +70,7 @@ What they can do in the platform:
 
 #### Feedback Report Viewer
 
-This role is designated for NS users that need a high level overview of the feedback. The Feedback Report Viewer, for example, could be someone from the PMER team that needs data for reporting or could be the Secretary General that would like to have an overview of the work. They CANNOT see any Personal Identifiable Information in the feedback record.
+This role is designated for NS users that need a high level overview of the feedback. The Feedback Report Viewer, for example, could be someone from the PMER team that needs data for reporting or could be the Secretary General that would like to have an overview of the work. They CANNOT see any Personal Identifiable Information (PII) in the feedback record.
 
 What they can do in the platform:
 
@@ -88,7 +88,7 @@ This role is designated to the Netherlands Red Cross Data Team 510. The Client S
 What can be expected from them:
  
 - Level 1 and 2 support
-  - Level 1: invite users, reset passwords, help users navigate the User Interface (UI), explain how EspoCRM is (not) meant to be used, update a field
+  - Level 1: invite users, reset passwords, help users navigate the User Interface (UI), explain how the Regional Feedback Management Platform is is (not) meant to be used, update a field
 - Troubleshooting errors
 - User support
 
@@ -99,9 +99,9 @@ This role is designated to the Netherlands Red Cross Data Team 510.
 What can be expected from them:
  
 - Level 1, 2, 3 support
-  - Level 1: invite users, reset passwords, help users navigate the User Interface (UI), explain how EspoCRM is (not) meant to be used, update a field
+  - Level 1: invite users, reset passwords, help users navigate the User Interface (UI), explain how the Regional Feedback Management Platform is (not) meant to be used, update a field
   - Level 2: add a new field, create a new entity, relate 2 entities with one another, automate a task (flowcharts)
-  - Level 3: setup the server on which EspoCRM is hosted, install/update EspoCRM, create/restore a backup, update network settings.
+  - Level 3: setup the server on which the Regional Feedback Management Platform is hosted, install/update the platform, create/restore a backup, update network settings.
 - Platform updates and configurations
 - Adding National Society Teams and onboarding them into the platform
 - Developing reports and maintaining the homepage dashboard
@@ -109,4 +109,4 @@ What can be expected from them:
 
 #### Feedback Data Collector (View Kobo Form)
  
-This role is not an EspoCRM role but solely a role in the KoboToolbox account of the NS feedback data collector who needs offline access to the KoboToolbox Form. This role can be requested through the NS focal point (Feedback Manager) who has access to the Form.
+This role is not an EspoCRM role but solely a role in the KoboToolbox account of the NS feedback data collector who needs offline access to the KoboToolbox Form. This role can be requested through the NS focal point (Feedback Supervisor) who has access to the Form.
