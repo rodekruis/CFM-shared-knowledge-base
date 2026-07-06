@@ -107,10 +107,10 @@ Ejemplos:
 
 ### Buenas prácticas
  
-- Revisar el panel **regularmente**
-- Compartir hallazgos con los **equipos de programa y sector**
-- Usar tanto **números como ejemplos (citas)**
-- Mantener la retroalimentación vinculada a la **toma de decisiones**
+- Revisa el panel **regularmente**
+- Comparte hallazgos con los **equipos de programa y sector**
+- Usa tanto **números como ejemplos (citas)**
+- Mantén la retroalimentación vinculada a la **toma de decisiones**
 El sistema no es solo para informes. Es una herramienta para:
  
 - Escuchar a las comunidades

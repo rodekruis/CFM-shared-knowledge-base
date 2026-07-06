@@ -1,4 +1,4 @@
-# [TEST] Retroalimentación Sensible
+# Retroalimentación Sensible
  
 ### 1. Propósito
  
@@ -24,14 +24,14 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
   - Asigna un punto focal de Retroalimentación Sensible designado (ver abajo).
   - Garantiza que se realice el seguimiento.
   - Configuraciones de la cuenta de usuario.
-- **Gestor de Retroalimentación**
+- **Punto Focal de Retroalimentación Sensible**
   - Gestiona el caso de principio a fin.
   - Garantiza el seguimiento y la documentación adecuados.
   - Actualiza el estado y cierra el caso.
   - Configuraciones de la cuenta de usuario.
 - **Sistema (Kobo / EspoCRM)**
   - Establece automáticamente la prioridad en *Alta* cuando la retroalimentación se marca como sensible.
-  - Autoriza automáticamente a los Gestores de Retroalimentación para gestionar retroalimentación sensible (según los roles/permisos definidos por la SN).
+  - Autoriza automáticamente al Supervisor de Retroalimentación para gestionar retroalimentación sensible (según los roles/permisos definidos por la SN).
   - Verifica que cualquier persona asignada esté autorizada para gestionar retroalimentación sensible.
   - Establece el estado del caso en *En Progreso* al asignarlo.
   - Envía notificaciones y recordatorios.
@@ -65,8 +65,8 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 
 #### Paso 4: Notificación y Monitoreo
  
-- El punto focal de Retroalimentación Sensible recibe una notificación por correo electrónico y a través de la Plataforma de Gestión de Retroalimentación.
-- El sistema le envía recordatorios diarios hasta que el caso se actualice.
+- El punto focal de Retroalimentación Sensible recibe una notificación por correo electrónico y la Plataforma Regional de Gestión de Retroalimentación.
+- La plataforma le envía recordatorios hasta que el caso se actualice.
 
 #### Paso 5: Gestión del Caso
  
@@ -84,7 +84,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
  
 - Una vez que el caso se resuelve:
   - El punto focal de Retroalimentación Sensible marca el caso como **cerrado**.
-  - El cierre se confirma en el sistema de resumen.
+  - El cierre se confirma en la vista general de la plataforma.
 
 ### 5. Principios Clave
  
@@ -100,11 +100,7 @@ El incumplimiento de este POE puede dar lugar a:
  
 - Retrasos en la gestión de retroalimentación de alto riesgo.
 - Incumplimientos de la confidencialidad o de los protocolos de protección.
-
-### 7. Visual del flujo de trabajo
  
-![Flujo de trabajo de retroalimentación sensible](../../assets/sensitive-feedback-flow.png)
- 
-### 8. Validación
+### 7. Validación
  
 - El protocolo debe revisarse antes de finales de 2026 para asegurarse de que siga siendo eficaz.

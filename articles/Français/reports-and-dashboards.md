@@ -92,7 +92,7 @@ Vous pouvez utiliser les rapports pour :
   - Filtrer par date → suivre les changements au fil du temps
 - Aller aux formulaires de retour d'information connectés
 - Approfondir des problèmes spécifiques
-- Exporter des données pour partager des informations
+- Exporter les données pour partager des informations
 *Remarque : le nom du projet doit être écrit correctement lors du filtrage sur les projets dans le rapport. La liste finale des titres de projet est disponible à partir du formulaire Kobo et peut être partagée par le Gestionnaire des retours d'information.*
  
 ### Transformer les enseignements en action

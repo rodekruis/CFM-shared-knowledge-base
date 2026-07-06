@@ -1,4 +1,4 @@
-# [TEST] Retour d'information sensible
+# Retour d'information sensible
  
 ### 1. Objectif
  
@@ -21,17 +21,17 @@ Le retour d'information sensible peut être classé de différentes manières, m
 - **Superviseur du retour d'information**
   - Examine les retours d'information entrants.
   - Confirme si le retour d'information est sensible selon les définitions de la SN.
-  - Assigne un **point focal du retour d'information sensible** désigné (voir ci-dessous).
+  - Assigne un point focal du retour d'information sensible désigné (voir ci-dessous).
   - Veille à ce que le suivi ait lieu.
   - Configurations du compte utilisateur.
-- **Gestionnaire du retour d'information**
+- **Point focal du retour d'information sensible**
   - Gère le cas de bout en bout.
   - Veille à un suivi et à une documentation appropriés.
   - Met à jour le statut et clôture le cas.
   - Configurations du compte utilisateur.
 - **Système (Kobo / EspoCRM)**
   - Définit automatiquement la priorité sur *Élevée* lorsque le retour d'information est marqué comme sensible.
-  - Autorise automatiquement les gestionnaires de retour d'information à traiter les retours d'information sensibles (sur la base des rôles/autorisations définis par la SN).
+  - Autorise automatiquement le superviseur du retour d'information à traiter les retours d'information sensibles (sur la base des rôles/autorisations définis par la SN).
   - Vérifie que toute personne assignée est autorisée à traiter les retours d'information sensibles.
   - Définit le statut du cas sur *En cours* lors de l'assignation.
   - Envoie des notifications et des rappels.
@@ -65,8 +65,8 @@ Le retour d'information sensible peut être classé de différentes manières, m
 
 #### Étape 4 : Notification et suivi
  
-- Le point focal du retour d'information sensible reçoit une notification par e-mail et via la Plateforme de Gestion des Retours d'Information.
-- Le système lui envoie des rappels quotidiens jusqu'à ce que le cas soit mis à jour.
+- Le point focal du retour d'information sensible reçoit une notification par e-mail et via la Plateforme régionale de gestion des retours d'information.
+- La plateforme lui envoie des rappels jusqu'à ce que le cas soit mis à jour.
 
 #### Étape 5 : Traitement du cas
  
@@ -84,7 +84,7 @@ Le retour d'information sensible peut être classé de différentes manières, m
  
 - Une fois le cas résolu :
   - Le point focal du retour d'information sensible marque le cas comme **clôturé**.
-  - La clôture est confirmée dans le système d'aperçu.
+  - La clôture est confirmée dans l'aperçu de la plateforme.
 
 ### 5. Principes clés
  
@@ -99,12 +99,8 @@ Le retour d'information sensible peut être classé de différentes manières, m
 Le non-respect de cette POS peut entraîner :
  
 - Des retards dans le traitement des retours d'information à haut risque.
-- Des violations de la confidentialité ou des protocoles de sauvegarde.
-
-### 7. Visuel du flux de travail
+- Des violations de la confidentialité ou des protocoles de protection.
  
-![Flux de travail du retour d'information sensible](../../assets/sensitive-feedback-flow.png)
- 
-### 8. Validation
+### 7. Validation
  
 - Le protocole doit être révisé d'ici la fin de 2026 pour s'assurer qu'il reste efficace.
