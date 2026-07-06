@@ -1,4 +1,4 @@
-# [TEST] Reports and Dashboard
+# Reports and Dashboard
  
 The reports and dashboard help you:
  
@@ -81,11 +81,8 @@ When in the dashboard, you can click on the different reports to provide more de
 - Find the report you want to get more information on.
 - Click on the 3 dots on the top right of the report,
 - Click on 'View report'.
-*[Screenshots: report tile menu options]*
  
-The following side page will then open.
- 
-*[Screenshot: report detail side page]*
+A side page will then open showing the different data points linked to the report.
  
 You can use reports to:
  
