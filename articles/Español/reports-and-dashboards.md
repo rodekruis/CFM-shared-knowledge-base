@@ -1,4 +1,4 @@
-# [TEST] Informes y Panel
+# Informes y Panel
  
 Los informes y el panel te ayudan a:
  
@@ -81,11 +81,8 @@ Cuando estés en el panel, puedes hacer clic en los diferentes informes para obt
 - Encuentra el informe sobre el que quieres obtener más información.
 - Haz clic en los 3 puntos en la parte superior derecha del informe,
 - Haz clic en 'View report'.
-*[Capturas de pantalla: opciones del menú del mosaico del informe]*
  
-La siguiente página lateral se abrirá entonces.
- 
-*[Captura de pantalla: página lateral de detalle del informe]*
+A continuación, se abrirá una página lateral que muestra los diferentes puntos de datos vinculados al informe.
  
 Puedes usar los informes para:
  

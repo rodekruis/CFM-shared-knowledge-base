@@ -1,4 +1,4 @@
-# [TEST] Rapports et tableau de bord
+# Rapports et tableau de bord
  
 Les rapports et le tableau de bord vous aident à :
  
@@ -81,11 +81,8 @@ Lorsque vous êtes dans le tableau de bord, vous pouvez cliquer sur les différe
 - Trouvez le rapport sur lequel vous souhaitez obtenir plus d'informations.
 - Cliquez sur les 3 points en haut à droite du rapport,
 - Cliquez sur 'View report'.
-*[Captures d'écran : options du menu de la vignette du rapport]*
  
-La page latérale suivante s'ouvrira alors.
- 
-*[Capture d'écran : page latérale de détail du rapport]*
+Une page latérale s'ouvrira alors, affichant les différents points de données liés au rapport.
  
 Vous pouvez utiliser les rapports pour :
  
