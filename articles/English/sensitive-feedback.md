@@ -42,7 +42,7 @@ Sensitive feedback can be classified in different ways, but here are 2 main dist
  
 - Feedback is collected and logged in Kobo.
 - If applicable, the Feedback Data Collector marks the feedback as **sensitive**.
-- If the feedback is marked as sensitive, the system automatically:
+- If the feedback is marked as sensitive, the platform automatically:
   - Sets its priority to **High**.
   - Assigns it to the Feedback Supervisor for review.
 
