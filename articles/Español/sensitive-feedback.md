@@ -42,7 +42,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
  
 - La retroalimentación se recopila y registra en Kobo.
 - Si corresponde, el Recolector de Retroalimentación marca la retroalimentación como **sensible**.
-- Si la retroalimentación se marca como sensible, el sistema automáticamente:
+- Si la retroalimentación se marca como sensible, la plataforma automáticamente:
   - Establece su prioridad en **Alta**.
   - La asigna al Supervisor de Retroalimentación para su revisión.
 
