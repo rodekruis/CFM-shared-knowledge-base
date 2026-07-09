@@ -12,15 +12,12 @@
       }
     },
     {
-      "id": "feedback-management-platform",
-      "source": ["Feedback Management Platform"],
+      "id": "regional-feedback-management-platform",
+      "source": ["Regional Feedback Management Platform"],
       "translations": {
-        "Français": ["Plateforme de Gestion des Retours d'Information", "Plateforme Régionale de Gestion des Retours d'Information",
-      "EspoCRM"],
-        "Español": ["Plataforma de Gestión de Retroalimentación", "Plataforma Regional de Gestión de Retroalimentación",
-      "EspoCRM"],
-        "العربية": ["منصة إدارة الملاحظات", ,
-      "EspoCRM"]
+        "Français": ["Plateforme Régionale de Gestion des Retours d'Information"],
+        "Español": ["Plataforma Regional de Gestión de Retroalimentación"],
+        "العربية": ["المنصة الإقليمية لإدارة الملاحظات"]
       }
     },
     {
