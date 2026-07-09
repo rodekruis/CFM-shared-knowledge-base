@@ -65,7 +65,7 @@ Le retour d'information sensible peut être classé de différentes manières, m
 
 #### Étape 4 : Notification et suivi
  
-- Le point focal du retour d'information sensible reçoit une notification par e-mail et via la Plateforme régionale de gestion des retours d'information.
+- Le point focal du retour d'information sensible reçoit une notification par e-mail et via la Plateforme Régionale de Gestion des Retours d'Information.
 - La plateforme lui envoie des rappels jusqu'à ce que le cas soit mis à jour.
 
 #### Étape 5 : Traitement du cas

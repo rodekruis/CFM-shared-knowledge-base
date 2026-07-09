@@ -2,13 +2,13 @@
 
 ### Objectif
 
-Documenter les rôles et permissions des utilisateurs est essentiel pour garantir la clarté, la sécurité et la responsabilité au sein de la Plateforme régionale de Gestion des Retours d'Information. Cela aidera à comprendre qui peut accéder à des sections spécifiques de la plateforme et de ses données, les modifier ou les gérer. Cela réduira le risque de mauvaise configuration, d'accès non autorisé et d'erreurs opérationnelles. Cela facilite également l'intégration, l'audit et la conformité en fournissant une référence fiable sur le comportement du système. 
+Documenter les rôles et permissions des utilisateurs est essentiel pour garantir la clarté, la sécurité et la responsabilité au sein de la Plateforme Régionale de Gestion des Retours d'Information. Cela aidera à comprendre qui peut accéder à des sections spécifiques de la plateforme et de ses données, les modifier ou les gérer. Cela réduira le risque de mauvaise configuration, d'accès non autorisé et d'erreurs opérationnelles. Cela facilite également l'intégration, l'audit et la conformité en fournissant une référence fiable sur le comportement du système. 
 
 Un aperçu plus détaillé de la gestion des rôles est disponible dans la [documentation officielle d'EspoCRM](https://docs.espocrm.com/administration/roles-management/). 
 
 ### Accéder à la Plateforme de Gestion des Retours d'Information
 
-Les Sociétés Nationales ont la possibilité d'accéder à la Plateforme régionale de Gestion des Retours d'Information. Comme il s'agit d'une plateforme partagée, chaque Société Nationale est affectée à une Équipe, ce qui lui permet d'accéder **UNIQUEMENT** à ses données de retour d'information et à ses visualisations.
+Les Sociétés Nationales ont la possibilité d'accéder à la Plateforme Régionale de Gestion des Retours d'Information. Comme il s'agit d'une plateforme partagée, chaque Société Nationale est affectée à une Équipe, ce qui lui permet d'accéder **UNIQUEMENT** à ses données de retour d'information et à ses visualisations.
 
 Au sein de la structure d'Équipe par Société Nationale, plusieurs utilisateurs de la Société Nationale peuvent être liés à l'Équipe correspondante pour y accéder. Selon les rôles et permissions spécifiques de l'utilisateur, celui-ci peut créer, lire, modifier et/ou supprimer des données de retour d'information.
 
@@ -34,7 +34,7 @@ Ce qu'il peut faire dans la plateforme :
 
 #### Point focal des retours d'information
 
-Ce rôle est désigné pour les membres de la SN (par ex., CEA, PMER, IM, branches, opérateurs de hotline) qui traiteront les retours d'information saisis dans la Plateforme régionale de Gestion des Retours d'Information. 
+Ce rôle est désigné pour les membres de la SN (par ex., CEA, PMER, IM, branches, opérateurs de hotline) qui traiteront les retours d'information saisis dans la Plateforme Régionale de Gestion des Retours d'Information. 
 
 Ce qu'il peut faire dans la plateforme :
 
@@ -83,12 +83,12 @@ Ce qu'il peut faire dans la plateforme :
  
 #### Support client
  
-Ce rôle est attribué à la Data Team 510 de la Croix-Rouge néerlandaise. L'équipe de Support client traitera et résoudra tout problème rencontré par la SN lors de l'utilisation de la Plateforme régionale de Gestion des Retours d'Information.
+Ce rôle est attribué à la Data Team 510 de la Croix-Rouge néerlandaise. L'équipe de Support client traitera et résoudra tout problème rencontré par la SN lors de l'utilisation de la Plateforme Régionale de Gestion des Retours d'Information.
  
 Ce que l'on peut attendre d'eux :
  
 - Support de niveau 1 et 2
-  - Niveau 1 : inviter des utilisateurs, réinitialiser des mots de passe, aider les utilisateurs à naviguer dans l'interface utilisateur (UI), expliquer comment la Plateforme régionale de Gestion des Retours d'Information est (ou n'est pas) censée être utilisée, mettre à jour un champ
+  - Niveau 1 : inviter des utilisateurs, réinitialiser des mots de passe, aider les utilisateurs à naviguer dans l'interface utilisateur (UI), expliquer comment la Plateforme Régionale de Gestion des Retours d'Information est (ou n'est pas) censée être utilisée, mettre à jour un champ
 - Résolution des erreurs
 - Support utilisateur
 
@@ -99,9 +99,9 @@ Ce rôle est attribué à la Data Team 510 de la Croix-Rouge néerlandaise.
 Ce que l'on peut attendre d'eux :
  
 - Support de niveau 1, 2, 3
-  - Niveau 1 : inviter des utilisateurs, réinitialiser des mots de passe, aider les utilisateurs à naviguer dans l'interface utilisateur (UI), expliquer comment la Plateforme régionale de Gestion des Retours d'Information est (ou n'est pas) censée être utilisée, mettre à jour un champ
+  - Niveau 1 : inviter des utilisateurs, réinitialiser des mots de passe, aider les utilisateurs à naviguer dans l'interface utilisateur (UI), expliquer comment la Plateforme Régionale de Gestion des Retours d'Information est (ou n'est pas) censée être utilisée, mettre à jour un champ
   - Niveau 2 : ajouter un nouveau champ, créer une nouvelle entité, relier 2 entités entre elles, automatiser une tâche (organigrammes)
-  - Niveau 3 : configurer le serveur sur lequel la Plateforme régionale de Gestion des Retours d'Information est hébergée, installer/mettre à jour la plateforme, créer/restaurer une sauvegarde, mettre à jour les paramètres réseau.
+  - Niveau 3 : configurer le serveur sur lequel la Plateforme Régionale de Gestion des Retours d'Information est hébergée, installer/mettre à jour la plateforme, créer/restaurer une sauvegarde, mettre à jour les paramètres réseau.
 - Mises à jour et configurations de la plateforme
 - Ajout des Équipes des Sociétés Nationales et intégration de celles-ci dans la plateforme
 - Développement des rapports et maintenance du tableau de bord de la page d'accueil

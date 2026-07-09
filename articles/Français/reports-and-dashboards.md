@@ -88,7 +88,7 @@ Vous pouvez utiliser les rapports pour :
  
 - Filtrer sur des informations spécifiques, par exemple :
   - Filtrer par secteur → comprendre les problèmes spécifiques au secteur
-  - Filtrer par localisation → soutenir les équipes locales
+  - Filtrer par localisation → soutenir les équipes des antennes
   - Filtrer par date → suivre les changements au fil du temps
 - Aller aux formulaires de retour d'information connectés
 - Approfondir des problèmes spécifiques
