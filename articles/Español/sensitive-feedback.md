@@ -1,38 +1,38 @@
-# Retroalimentación Sensible
+# Gestión de Retroalimentación Sensible
  
 ### 1. Propósito
  
-Para garantizar que la retroalimentación clasificada como sensible por la Sociedad Nacional (SN) se gestione de forma segura, coherente y únicamente por personas autorizadas designadas.
+Garantizar que la retroalimentación clasificada como sensible por la Sociedad Nacional (SN) se gestione de forma segura, coherente y únicamente por personas autorizadas designadas.
  
 ### 2. Definición
  
 La retroalimentación sensible es una categoría de retroalimentación definida por la Sociedad Nacional (SN), que solo puede ser gestionada por personas responsables específicamente designadas.
  
-La retroalimentación sensible puede clasificarse de diferentes maneras, pero aquí hay 2 distinciones principales que se deben tener en cuenta, ya que el seguimiento se realizará de manera diferente:
+La retroalimentación sensible puede clasificarse de diferentes maneras, hay 2 distinciones principales que se deben tener en cuenta, ya que el seguimiento se realizará de manera diferente:
  
 - Incumplimientos del código de conducta (ejemplo: corrupción/fraude/VBG cometidos por personal o voluntariado de la Cruz Roja)
 - Retroalimentación que es sensible para la situación personal de alguien (ejemplo: salud, estigma, violencia doméstica).
 
 ### 3. Roles y Responsabilidades
  
-- **Recolector de Retroalimentación**
+- **Recolector de Datos de Retroalimentación**
   - Registra la retroalimentación en Kobo.
-  - Marca la retroalimentación como sensible cuando corresponda.
+  - Marca la retroalimentación como sensible en los casos que correspondan.
 - **Supervisor de Retroalimentación**
-  - Revisa la retroalimentación entrante.
+  - Revisa la retroalimentación recibida.
   - Confirma si la retroalimentación es sensible según las definiciones de la SN.
-  - Asigna un punto focal de Retroalimentación Sensible designado (ver abajo).
+  - Asigna un Punto Focal de Retroalimentación Sensible (ver abajo).
   - Garantiza que se realice el seguimiento.
-  - Configuraciones de la cuenta de usuario.
+  - Gestiona las configuraciones de la cuenta de usuario.
 - **Punto Focal de Retroalimentación Sensible**
   - Gestiona el caso de principio a fin.
   - Garantiza el seguimiento y la documentación adecuados.
   - Actualiza el estado y cierra el caso.
-  - Configuraciones de la cuenta de usuario.
+  - Gestiona las configuraciones de la cuenta de usuario.
 - **Sistema (Kobo / EspoCRM)**
   - Establece automáticamente la prioridad en *Alta* cuando la retroalimentación se marca como sensible.
-  - Autoriza automáticamente al Supervisor de Retroalimentación para gestionar retroalimentación sensible (según los roles/permisos definidos por la SN).
-  - Verifica que cualquier persona asignada esté autorizada para gestionar retroalimentación sensible.
+  - Autoriza automáticamente al Supervisor de Retroalimentación para gestionar la retroalimentación sensible (según los roles/permisos definidos por la SN).
+  - Verifica que cualquier persona asignada esté autorizada para gestionar la retroalimentación sensible.
   - Establece el estado del caso en *En Progreso* al asignarlo.
   - Envía notificaciones y recordatorios.
 
@@ -44,7 +44,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 - Si corresponde, el Recolector de Retroalimentación marca la retroalimentación como **sensible**.
 - Si la retroalimentación se marca como sensible, la plataforma automáticamente:
   - Establece su prioridad en **Alta**.
-  - La asigna al Supervisor de Retroalimentación para su revisión.
+  - Asigna la retroalimentación al Supervisor de Retroalimentación para su revisión.
 
 #### Paso 2: Revisión y Validación
  
@@ -70,7 +70,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 
 #### Paso 5: Gestión del Caso
  
-- El punto focal de Retroalimentación Sensible:
+- El Punto Focal de Retroalimentación Sensible:
   - Revisa el caso.
   - Toma las medidas apropiadas.
   - Sigue los procedimientos operativos estándar internos para la gestión de casos sensibles.
@@ -78,29 +78,29 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 
 #### Paso 6: Actualizaciones de Estado
  
-- El punto focal de Retroalimentación Sensible actualiza el estado del caso a medida que avanza el trabajo.
+- El Punto Focal de Retroalimentación Sensible actualiza el estado del caso a medida que avanza el trabajo.
 
 #### Paso 7: Cierre
  
 - Una vez que el caso se resuelve:
-  - El punto focal de Retroalimentación Sensible marca el caso como **cerrado**.
-  - El cierre se confirma en la vista general de la plataforma.
+  - El Punto Focal de Retroalimentación Sensible marca el caso como **cerrado**.
+  - El cierre queda confirmado en la vista general de la plataforma.
 
 ### 5. Principios Clave
  
-- La Sociedad Nacional define qué constituye retroalimentación sensible.
+- La SN define qué constituye retroalimentación sensible.
 - Solo las personas autorizadas pueden gestionar retroalimentación sensible.
 - La retroalimentación sensible está oculta para todos los demás usuarios excepto para los usuarios autorizados.
 - Todos los casos de retroalimentación sensible se tratan como de **alta prioridad**.
-- El seguimiento oportuno es obligatorio y se supervisa activamente.
+- El seguimiento es obligatorio y se supervisa activamente.
 
 ### 6. Riesgos
  
-El incumplimiento de este POE puede dar lugar a:
+El incumplimiento de este Procedimiento Operativo Estándar (POE) puede dar lugar a:
  
 - Retrasos en la gestión de retroalimentación de alto riesgo.
 - Incumplimientos de la confidencialidad o de los protocolos de protección.
  
 ### 7. Validación
  
-- El protocolo debe revisarse antes de finales de 2026 para asegurarse de que siga siendo eficaz.
+- Este protocolo debe revisarse antes de que finalice 2026 para garantizar que continúe siendo eficaz.
