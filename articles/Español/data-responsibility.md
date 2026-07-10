@@ -1,8 +1,8 @@
-# Marco de Responsabilidad de Datos
+# Marco de Responsabilidad en materia de Datos
  
 ### Propósito
  
-Este documento proporciona una visión general clara de las responsabilidades sobre los datos para las Sociedades Nacionales (SN) que participan en la Plataforma de Gestión de Retroalimentación. Define quién es responsable de los datos, cómo se procesan y qué obligaciones conlleva cada rol.
+Este documento ofrece una visión clara de las responsabilidades sobre los datos que corresponden a las Sociedades Nacionales (SN) participantes en la Plataforma de Gestión de Retroalimentación. Define quién es responsable de la gestión de datos, cómo se procesan y qué obligaciones conlleva cada rol.
  
 ### Resumen de la Plataforma
  
@@ -15,11 +15,11 @@ Este documento proporciona una visión general clara de las responsabilidades so
 
 ### Roles y Responsabilidades de los Datos
  
-| Role | Who | Key Responsibilities | Access in EspoCRM |
+| Rol | Quién | Responsabilidades Clave | Acceso en EspoCRM |
 |------|-----|----------------------|-------------------|
-| **Responsable del Tratamiento** | SN participante | • Determina el propósito y los medios del procesamiento<br>• Garantiza la base legal para la recopilación de datos<br>• Responsable de los derechos de los titulares de los datos<br>• Inicia y firma un Acuerdo de Intercambio de Datos con NLRC | Varía según el rol de usuario asignado |
+| **Responsable del Tratamiento** | SN participante | • Determina el propósito y los medios del procesamiento<br>• Garantiza la base legal para la recopilación de datos<br>• Es responsable de los derechos de los titulares de los datos<br>• Inicia y firma un Acuerdo de Intercambio de Datos con NLRC | Varía según el rol de usuario asignado |
 | **Encargado del Tratamiento** | Cruz Roja Neerlandesa (NLRC) | • Aloja y opera la instancia de EspoCRM [Azure West Europe – Amsterdam]<br>• Procesa datos solo siguiendo instrucciones de la SN<br>• Implementa medidas de seguridad técnicas y organizativas<br>• Apoya a la SN en la DPIA si es necesario<br>• Notifica a la SN sobre cualquier violación de datos | Administrador de EspoCRM: acceso a todo el sistema solo para configuración y mantenimiento |
-| **Encargado del Tratamiento** | IFRC (aloja KoboToolbox) | • Aloja y opera la plataforma KoboToolbox (en AWS Frankfurt, Alemania) para el envío de formularios y la recopilación de datos<br>• Procesa datos de retroalimentación en nombre de la SN antes de su transmisión a EspoCRM<br>• Aplica medidas de seguridad a los datos en tránsito y en reposo<br>• Sujeto al marco de protección de datos de IFRC | Los datos se transmiten a EspoCRM mediante API al enviar el formulario |
+| **Encargado del Tratamiento** | IFRC (aloja KoboToolbox) | • Aloja y opera la plataforma KoboToolbox (en AWS Frankfurt, Alemania) para el envío de formularios y la recopilación de datos<br>• Procesa datos de retroalimentación en nombre de la SN antes de su transmisión a EspoCRM<br>• Aplica medidas de seguridad a los datos en tránsito y en reposo<br>• Es sujeto al marco de protección de datos de IFRC | Los datos se transmiten a EspoCRM mediante API al enviar el formulario |
 | **Administrador de la Plataforma (KoboToolbox)** | Administrador de Kobo (NLRC) | • Gestiona la configuración de formularios de KoboToolbox<br>• Garantiza el etiquetado correcto del equipo (SN, indicador de sensibilidad) al enviar formularios | Administrador de Kobo: acceso a la gestión de formularios |
 | **Usuario de API** | Cuenta técnica gestionada por NLRC | • Facilita la transmisión automatizada entre KoboToolbox y EspoCRM<br>• Gestionada y supervisada por el Encargado del Tratamiento de NLRC | • Acceso a nivel de sistema limitado al equipo de SN asignado<br>• Usuario solo para fines de integración |
 | **Gestor de Retroalimentación** | Personal de la SN (supervisión) | • Supervisa la gestión de la retroalimentación dentro de la SN<br>• Asigna el seguimiento a puntos focales<br>• Garantiza respuestas oportunas y adecuadas | • Crear, leer, editar y archivar toda la retroalimentación de la SN<br>• Asignar puntos focales<br>• Recibir notificaciones por correo electrónico |
@@ -27,7 +27,7 @@ Este documento proporciona una visión general clara de las responsabilidades so
 | **Recopilador de Retroalimentación** | Personal o voluntario de la SN | • Envía retroalimentación de la comunidad en nombre de personas mediante KoboToolbox desde un enlace con código QR o la aplicación móvil KoboCollect<br>• No accede a EspoCRM | • Sin acceso<br>• Los datos ingresan a EspoCRM automáticamente al enviarse mediante KoboToolbox |
 | **Gestor de Retroalimentación Sensible** | Personal de la SN (acceso restringido) | • Gestiona casos de retroalimentación sensible<br>• Debe cumplir estrictas obligaciones de confidencialidad | Leer y editar retroalimentación marcada como sensible |
 | **Visualizador de Informes** | Personal de la SN / dirección | • Supervisa tendencias y el desempeño de los programas<br>• Usa los datos para mejorar los programas | • Leer informes (solo)<br>• Sin acceso a registros individuales |
-| **Soporte al Cliente** | Personal de soporte de NLRC | • Proporciona soporte técnico a los usuarios de la SN<br>• No accede al contenido de la retroalimentación en operaciones normales | Acceso limitado: solo para fines de soporte |
+| **Atención al Cliente** | Personal de soporte de NLRC | • Proporciona soporte técnico a los usuarios de la SN<br>• No accede al contenido de la retroalimentación en operaciones normales | Acceso limitado: solo para fines de soporte |
 
 ### Datos Procesados
  
