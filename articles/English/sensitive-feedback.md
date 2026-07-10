@@ -103,4 +103,4 @@ Failure to follow this SOP may result in:
  
 ### 7. Validation
  
-- Protocol needs review by the end of 2026 to make sure it stays effective.
+- Protocol needs review by the end of 2026 to make sure it stays effective. 
