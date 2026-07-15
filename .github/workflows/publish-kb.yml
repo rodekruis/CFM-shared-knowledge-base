@@ -52,7 +52,7 @@ jobs:
       # shell-quoted list of the changed files per filter (e.g.
       # `english_files`) so we can translate only what changed.
       - name: Detect changes
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@v4
         id: changes
         with:
           list-files: shell
