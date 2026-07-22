@@ -26,7 +26,7 @@ packages = ["src/cfm_kb"]
 [dependency-groups]
 dev = [
     "pytest>=8.0",
-    "ruff>=0.8",
+    "ruff>=0.15.21",
     "ty",
 ]
 
