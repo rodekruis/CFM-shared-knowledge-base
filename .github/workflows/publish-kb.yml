@@ -122,8 +122,11 @@ jobs:
             echo "No translation changes to commit."
           fi
 
+      # Dependabot PRs get no Actions secrets, and dependency bumps don't touch articles.
       - name: Validate articles (dry-run)
-        if: github.event_name == 'pull_request'
+        if: >-
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.user.login != 'dependabot[bot]'
         env:
           ESPO_URL: ${{ secrets.ESPO_URL }}
           ESPO_API_KEY: ${{ secrets.ESPO_API_KEY }}
