@@ -2,7 +2,7 @@
  
 ### Purpose
  
-This document provides a clear overview of data responsibilities for National Societies (NS) participating in the Feedback Management Platform. It defines who is accountable for data, how it is processed, and what obligations each role carries.
+This document provides a clear overview of data responsibilities for National Societies (NS) participating in the Feedback Management Platform. It defines who is accountable for data, how it is processed, and what obligations each role carries. 
  
 ### Platform Overview
  

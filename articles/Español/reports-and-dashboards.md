@@ -4,7 +4,7 @@ Los informes y el panel te ayudan a:
  
 - Entender **qué retroalimentación comparten las comunidades**
 - Identificar **tendencias y problemas recurrentes**
-- Monitorear **cómo (de bien/rápido) se está gestionando la retroalimentación**
+- Monitorear **qué tan bien o rápido se está gestionando la retroalimentación**
 - Apoyar **la toma de decisiones y las mejoras del programa**
 
 ### Qué puedes ver en los Informes y el Panel
@@ -24,7 +24,7 @@ Puedes usar esto para:
 - Subtemas (basados en niveles de codificación)
 Puedes usar esto para:
  
-- Identificar problemas clave y problemas recurrentes
+- Identificar los principales problemas y patrones recurrentes
 
 #### 3. Ubicación
  
@@ -58,7 +58,7 @@ Puedes usar esto para:
  
 Puedes usar esto para:
  
-- Entender si las respuestas/la gestión de la retroalimentación son **efectivas**
+- Entender si las respuestas/la gestión de la retroalimentación están siendo **efectivas**
 - Mejorar la comunicación y el seguimiento
 
 ### Cómo interpretar los datos
@@ -68,7 +68,7 @@ Puedes usar esto para:
   - Muchas quejas similares = **problema real**
 - **Presta atención a:**
   - Aumento de quejas
-  - Problemas repetidos en el mismo sector
+  - Problemas recurrentes en el mismo sector
   - Retrasos en el cierre de casos
   - Puntuaciones bajas de satisfacción
 - **Combina puntos de datos**
@@ -80,7 +80,7 @@ Cuando estés en el panel, puedes hacer clic en los diferentes informes para obt
  
 - Encuentra el informe sobre el que quieres obtener más información.
 - Haz clic en los 3 puntos en la parte superior derecha del informe,
-- Haz clic en 'View report'.
+- Haz clic en 'Ver informe'.
  
 A continuación, se abrirá una página lateral que muestra los diferentes puntos de datos vinculados al informe.
  
@@ -93,7 +93,7 @@ Puedes usar los informes para:
 - Ir a los formularios de retroalimentación conectados
 - Profundizar en problemas específicos
 - Exportar datos para compartir hallazgos
-*Nota: el nombre del proyecto debe escribirse correctamente al filtrar por proyectos en el informe. La lista final de títulos de proyectos está disponible en el Kobo Form y puede ser compartida por el Feedback Manager.*
+*Nota: el nombre del proyecto debe escribirse correctamente al filtrar por proyectos en el informe. La lista final de títulos de proyectos está disponible en el Kobo Form y puede ser compartida por el Gestor de Retroalimentación.*
  
 ### Convertir los hallazgos en acciones
  
@@ -103,7 +103,7 @@ Ejemplos:
  
 - Muchas preguntas sobre elegibilidad → mejorar la comunicación sobre la elegibilidad
 - Quejas sobre retrasos → ajustar procesos
-- Problema repetido en un área → hacer seguimiento localmente
+- Problema recurrente en un área → hacer seguimiento localmente
 
 ### Buenas prácticas
  

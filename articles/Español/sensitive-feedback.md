@@ -2,7 +2,7 @@
  
 ### 1. Propósito
  
-Para garantizar que la retroalimentación clasificada como sensible por la Sociedad Nacional (SN) se gestione de forma segura, coherente y únicamente por personas autorizadas designadas.
+Garantizar que la retroalimentación clasificada como sensible por la Sociedad Nacional (SN) se gestione de forma segura, coherente y únicamente por personas autorizadas designadas.
  
 ### 2. Definición
  
@@ -15,11 +15,11 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 
 ### 3. Roles y Responsabilidades
  
-- **Recolector de Retroalimentación**
+- **Recolector de Datos de Retroalimentación**
   - Registra la retroalimentación en Kobo.
-  - Marca la retroalimentación como sensible cuando corresponda.
+  - Marca la retroalimentación como sensible en los casos que correspondan.
 - **Supervisor de Retroalimentación**
-  - Revisa la retroalimentación entrante.
+  - Revisa la retroalimentación recibida.
   - Confirma si la retroalimentación es sensible según las definiciones de la SN.
   - Asigna un punto focal de Retroalimentación Sensible designado (ver abajo).
   - Garantiza que se realice el seguimiento.
@@ -31,8 +31,8 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
   - Configuraciones de la cuenta de usuario.
 - **Sistema (Kobo / EspoCRM)**
   - Establece automáticamente la prioridad en *Alta* cuando la retroalimentación se marca como sensible.
-  - Autoriza automáticamente al Supervisor de Retroalimentación para gestionar retroalimentación sensible (según los roles/permisos definidos por la SN).
-  - Verifica que cualquier persona asignada esté autorizada para gestionar retroalimentación sensible.
+  - Autoriza automáticamente al Supervisor de Retroalimentación para gestionar la retroalimentación sensible (según los roles/permisos definidos por la SN).
+  - Verifica que cualquier persona asignada esté autorizada para gestionar la retroalimentación sensible.
   - Establece el estado del caso en *En Progreso* al asignarlo.
   - Envía notificaciones y recordatorios.
 
@@ -41,7 +41,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
 #### Paso 1: Recolección y Registro de Retroalimentación
  
 - La retroalimentación se recopila y registra en Kobo.
-- Si corresponde, el Recolector de Retroalimentación marca la retroalimentación como **sensible**.
+- Si corresponde, el Recolector de Datos de Retroalimentación marca la retroalimentación como **sensible**.
 - Si la retroalimentación se marca como sensible, la plataforma automáticamente:
   - Establece su prioridad en **Alta**.
   - La asigna al Supervisor de Retroalimentación para su revisión.
@@ -84,7 +84,7 @@ La retroalimentación sensible puede clasificarse de diferentes maneras, pero aq
  
 - Una vez que el caso se resuelve:
   - El punto focal de Retroalimentación Sensible marca el caso como **cerrado**.
-  - El cierre se confirma en la vista general de la plataforma.
+  - El cierre queda confirmado en la vista general de la plataforma.
 
 ### 5. Principios Clave
  
@@ -103,4 +103,4 @@ El incumplimiento de este POE puede dar lugar a:
  
 ### 7. Validación
  
-- El protocolo debe revisarse antes de finales de 2026 para asegurarse de que siga siendo eficaz.
+- El protocolo debe revisarse antes de finales de 2026 para garantizar que siga siendo eficaz.
